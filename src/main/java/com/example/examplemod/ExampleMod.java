@@ -1,16 +1,16 @@
 package com.example.examplemod;
 
 import net.minecraft.block.Block;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -24,7 +24,12 @@ public class ExampleMod {
     public static final String MOD_ID = "examplemod";
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
-
+    public static final ItemGroup TAB = new ItemGroup(ExampleMod.MOD_ID) {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(Items.TITANIUM_INGOT.get());
+        }
+    };
     public ExampleMod() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -41,6 +46,7 @@ public class ExampleMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         Items.register(modEventBus);
         Blocks.register(modEventBus);
+        modEventBus.addListener(this::registerProviders);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -85,6 +91,19 @@ public class ExampleMod {
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here
             LOGGER.info("HELLO from Register Block");
+        }
+    }
+    private void registerProviders(GatherDataEvent event) {
+        DataGenerator gen = event.getGenerator();
+        if (event.includeClient()) {
+            gen.addProvider(new ExampleModBlockStateProvider(gen, MOD_ID, event.getExistingFileHelper()));
+            gen.addProvider(new ExampleModItemModelProvider(gen, MOD_ID, event.getExistingFileHelper()));
+            gen.addProvider(new ExampleModEnUsLanguageProvider(gen, MOD_ID));
+            gen.addProvider(new ExampleModJaJpLanguageProvider(gen, MOD_ID));
+        }
+        if (event.includeServer()) {
+            gen.addProvider(new ExampleModRecipeProvider(gen));
+            gen.addProvider(new ExampleModLootTableProvider(gen));
         }
     }
 }
