@@ -23,7 +23,7 @@ class ExampleModRecipeProvider(gen: DataGenerator) : RecipeProvider(gen) {
             .requires(ExampleBlocks.TITANIUM_BLOCK.get())
             .group("titanium_ingot")
             .unlockedBy("has_titanium_block", has(ExampleBlocks.TITANIUM_BLOCK.get()))
-            .save(consumer, "titaniummod:titanium_ingot_from_titanium_block")
+            .save(consumer, "examplemod:titanium_ingot_from_titanium_block")
     }
 
 }

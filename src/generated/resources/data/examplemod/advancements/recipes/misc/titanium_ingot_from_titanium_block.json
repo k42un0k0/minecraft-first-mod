@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "titaniummod:titanium_ingot_from_titanium_block"
+      "examplemod:titanium_ingot_from_titanium_block"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "titaniummod:titanium_ingot_from_titanium_block"
+        "recipe": "examplemod:titanium_ingot_from_titanium_block"
       }
     }
   },
