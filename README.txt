@@ -46,3 +46,11 @@ Forge Forum: https://forums.minecraftforge.net/
 Forge Discord: https://discord.gg/UvedJ9m
 
 [参考](https://www.tntmodders.com/tutorial/)
+
+### kotlin化
+1. `src/main/java`にフォーカスを合わせて、`code -> convert java files to kotlin files`を実行する
+2. build gradleに編集が加わるのでsync
+3. 再度1を実行して完了
+
+#### `runClient`するとエラーが出る（TODO: 治ったので再現したらエラー内容追加する）
+`gradlew build`すると治る
