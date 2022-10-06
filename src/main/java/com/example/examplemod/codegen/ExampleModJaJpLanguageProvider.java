@@ -1,7 +1,8 @@
-package com.example.examplemod;
+package com.example.examplemod.codegen;
 
+import com.example.examplemod.ExampleBlocks;
+import com.example.examplemod.ExampleItems;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IDataProvider;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ExampleModJaJpLanguageProvider  extends LanguageProvider {
@@ -11,7 +12,7 @@ public class ExampleModJaJpLanguageProvider  extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add(Blocks.TITANIUM_BLOCK.get(), "チタンブロック");
-        add(Items.TITANIUM_INGOT.get(), "チタンインゴット");
+        add(ExampleBlocks.TITANIUM_BLOCK.get(), "チタンブロック");
+        add(ExampleItems.TITANIUM_INGOT.get(), "チタンインゴット");
     }
 }

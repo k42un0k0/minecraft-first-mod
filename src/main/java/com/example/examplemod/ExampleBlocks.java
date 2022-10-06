@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Collection;
 
 
-public class Blocks {
+public class ExampleBlocks {
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ExampleMod.MOD_ID);
     public static final RegistryObject<Block> TITANIUM_BLOCK = BLOCKS.register("titanium_block", () -> new Block(AbstractBlock.Properties
             .of(Material.METAL, MaterialColor.METAL)

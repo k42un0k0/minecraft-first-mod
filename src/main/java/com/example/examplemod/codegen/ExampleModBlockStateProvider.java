@@ -1,5 +1,6 @@
-package com.example.examplemod;
+package com.example.examplemod.codegen;
 
+import com.example.examplemod.ExampleBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -13,7 +14,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlockWithItem(Blocks.TITANIUM_BLOCK.get());
+        simpleBlockWithItem(ExampleBlocks.TITANIUM_BLOCK.get());
     }
 
     private void simpleBlockWithItem(Block block) {

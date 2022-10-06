@@ -1,5 +1,6 @@
-package com.example.examplemod;
+package com.example.examplemod.codegen;
 
+import com.example.examplemod.ExampleItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -15,7 +16,7 @@ public class ExampleModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        simpleItem(Items.TITANIUM_INGOT.get());
+        simpleItem(ExampleItems.TITANIUM_INGOT.get());
     }
 
     private void simpleItem(Item item) {

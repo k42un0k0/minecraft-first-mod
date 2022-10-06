@@ -1,6 +1,7 @@
-package com.example.examplemod;
+package com.example.examplemod.codegen;
 
 
+import com.example.examplemod.ExampleBlocks;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import mcp.MethodsReturnNonnullByDefault;
@@ -41,12 +42,12 @@ public class ExampleModLootTableProvider extends LootTableProvider {
     private static class TitaniumModBlockLootTables extends BlockLootTables {
         @Override
         protected Iterable<Block> getKnownBlocks() {
-            return Blocks.getEntries().stream().map(RegistryObject::get).collect(Collectors.toList());
+            return ExampleBlocks.getEntries().stream().map(RegistryObject::get).collect(Collectors.toList());
         }
 
         @Override
         protected void addTables() {
-            dropSelf(Blocks.TITANIUM_BLOCK.get());
+            dropSelf(ExampleBlocks.TITANIUM_BLOCK.get());
         }
     }
 }

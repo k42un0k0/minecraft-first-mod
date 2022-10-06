@@ -1,5 +1,6 @@
 package com.example.examplemod;
 
+import com.example.examplemod.codegen.*;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
@@ -27,7 +28,7 @@ public class ExampleMod {
     public static final ItemGroup TAB = new ItemGroup(ExampleMod.MOD_ID) {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(Items.TITANIUM_INGOT.get());
+            return new ItemStack(ExampleItems.TITANIUM_INGOT.get());
         }
     };
     public ExampleMod() {
@@ -44,8 +45,8 @@ public class ExampleMod {
         MinecraftForge.EVENT_BUS.register(this);
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        Items.register(modEventBus);
-        Blocks.register(modEventBus);
+        ExampleItems.register(modEventBus);
+        ExampleBlocks.register(modEventBus);
         modEventBus.addListener(this::registerProviders);
     }
 
