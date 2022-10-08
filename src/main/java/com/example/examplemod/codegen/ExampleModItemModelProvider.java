@@ -1,6 +1,6 @@
 package com.example.examplemod.codegen;
 
-import com.example.examplemod.ExampleItems;
+import com.example.examplemod.item.ExampleItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;

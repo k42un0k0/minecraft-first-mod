@@ -1,5 +1,7 @@
-package com.example.examplemod;
+package com.example.examplemod.item;
 
+import com.example.examplemod.block.ExampleBlocks;
+import com.example.examplemod.ExampleMod;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -8,12 +10,11 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ExampleItems {
-    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,ExampleMod.MOD_ID);
+    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ExampleMod.MOD_ID);
     public static final RegistryObject<Item> TITANIUM_BLOCK = ITEMS.register("titanium_block", () -> new BlockItem(ExampleBlocks.TITANIUM_BLOCK.get(), new Item.Properties()
             .tab(ExampleMod.TAB)));
     public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot", () -> new Item(new Item.Properties()
             .tab(ExampleMod.TAB)));
-
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

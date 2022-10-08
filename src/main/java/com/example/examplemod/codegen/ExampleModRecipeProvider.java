@@ -1,7 +1,7 @@
 package com.example.examplemod.codegen;
 
-import com.example.examplemod.ExampleBlocks;
-import com.example.examplemod.ExampleItems;
+import com.example.examplemod.block.ExampleBlocks;
+import com.example.examplemod.item.ExampleItems;
 import net.minecraft.data.*;
 
 import java.util.function.Consumer;

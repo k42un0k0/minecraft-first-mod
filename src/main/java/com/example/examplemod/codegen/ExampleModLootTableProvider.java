@@ -1,7 +1,7 @@
 package com.example.examplemod.codegen;
 
 
-import com.example.examplemod.ExampleBlocks;
+import com.example.examplemod.block.ExampleBlocks;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import mcp.MethodsReturnNonnullByDefault;

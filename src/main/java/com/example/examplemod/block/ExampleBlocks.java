@@ -1,5 +1,6 @@
-package com.example.examplemod;
+package com.example.examplemod.block;
 
+import com.example.examplemod.ExampleMod;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

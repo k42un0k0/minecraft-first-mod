@@ -1,6 +1,6 @@
 package com.example.examplemod.codegen;
 
-import com.example.examplemod.ExampleBlocks;
+import com.example.examplemod.block.ExampleBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.BlockStateProvider;

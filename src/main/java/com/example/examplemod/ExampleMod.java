@@ -1,15 +1,27 @@
 package com.example.examplemod;
 
+import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.codegen.*;
+import com.example.examplemod.entity.ExampleEntityTypes;
+import com.example.examplemod.entity.custom.BuffZombieEntity;
+import com.example.examplemod.entity.custom.PigeonEntity;
+import com.example.examplemod.entity.render.BuffZombieRenderer;
+import com.example.examplemod.entity.render.PigeonRenderer;
+import com.example.examplemod.item.ExampleItems;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
@@ -47,6 +59,7 @@ public class ExampleMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ExampleItems.register(modEventBus);
         ExampleBlocks.register(modEventBus);
+        ExampleEntityTypes.register(modEventBus);
         modEventBus.addListener(this::registerProviders);
     }
 
@@ -54,11 +67,15 @@ public class ExampleMod {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", net.minecraft.block.Blocks.DIRT.getRegistryName());
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+        ClientPlayerEntity player = Minecraft.getInstance().player;
+        RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(), BuffZombieRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.PIGEON.get(), PigeonRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
@@ -83,7 +100,6 @@ public class ExampleMod {
         // do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
-
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
