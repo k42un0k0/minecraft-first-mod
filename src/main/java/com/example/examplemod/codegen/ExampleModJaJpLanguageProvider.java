@@ -15,6 +15,7 @@ public class ExampleModJaJpLanguageProvider  extends LanguageProvider {
         add(ExampleBlocks.TITANIUM_BLOCK.get(), "チタンブロック");
         add(ExampleItems.TITANIUM_INGOT.get(), "チタンインゴット");
         add(ExampleItems.AMETHYST_BLOCK.get(), "アメジストブロック");
+        add(ExampleItems.AMETHYST_ORE.get(), "アメジスト鉱石");
         add(ExampleItems.AMETHYST.get(), "アメジスト");
     }
 }

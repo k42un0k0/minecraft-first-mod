@@ -1,5 +1,6 @@
 {
   "block.examplemod.amethyst_block": "\u30A2\u30E1\u30B8\u30B9\u30C8\u30D6\u30ED\u30C3\u30AF",
+  "block.examplemod.amethyst_ore": "\u30A2\u30E1\u30B8\u30B9\u30C8\u9271\u77F3",
   "block.examplemod.titanium_block": "\u30C1\u30BF\u30F3\u30D6\u30ED\u30C3\u30AF",
   "item.examplemod.amethyst": "\u30A2\u30E1\u30B8\u30B9\u30C8",
   "item.examplemod.titanium_ingot": "\u30C1\u30BF\u30F3\u30A4\u30F3\u30B4\u30C3\u30C8"

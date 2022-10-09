@@ -35,6 +35,11 @@ public class ExampleBlocks {
             .harvestLevel(1)
     ));
 
+    public static final RegistryObject<Block> AMETHYST_ORE = BLOCKS.register("amethyst_ore",
+            () -> new Block(AbstractBlock.Properties.of(Material.STONE)
+                    .harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(5f)));
+
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

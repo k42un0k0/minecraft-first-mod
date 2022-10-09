@@ -16,6 +16,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         simpleBlockWithItem(ExampleBlocks.TITANIUM_BLOCK.get());
         simpleBlockWithItem(ExampleBlocks.AMETHYST_BLOCK.get());
+        simpleBlockWithItem(ExampleBlocks.AMETHYST_ORE.get());
     }
 
     private void simpleBlockWithItem(Block block) {
