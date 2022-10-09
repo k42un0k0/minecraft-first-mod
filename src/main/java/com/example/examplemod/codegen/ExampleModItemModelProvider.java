@@ -17,6 +17,7 @@ public class ExampleModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         simpleItem(ExampleItems.TITANIUM_INGOT.get());
+        simpleItem(ExampleItems.AMETHYST.get());
     }
 
     private void simpleItem(Item item) {

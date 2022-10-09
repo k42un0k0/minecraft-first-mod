@@ -26,6 +26,15 @@ public class ExampleBlocks {
             .harvestLevel(1)
     ));
 
+    public static final RegistryObject<Block> AMETHYST_BLOCK = BLOCKS.register("amethyst_block", () -> new Block(AbstractBlock.Properties
+            .of(Material.METAL, MaterialColor.COLOR_PURPLE)
+            .requiresCorrectToolForDrops()
+            .strength(5.0F, 6.0F)
+            .sound(SoundType.METAL)
+            .harvestTool(ToolType.PICKAXE)
+            .harvestLevel(1)
+    ));
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

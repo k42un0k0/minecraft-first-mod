@@ -37,12 +37,7 @@ public class ExampleMod {
     public static final String MOD_ID = "examplemod";
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
-    public static final ItemGroup TAB = new ItemGroup(ExampleMod.MOD_ID) {
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(ExampleItems.TITANIUM_INGOT.get());
-        }
-    };
+
     public ExampleMod() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);

@@ -1,4 +1,7 @@
 {
+  "block.examplemod.amethyst_block": "Block of Amethyst",
   "block.examplemod.titanium_block": "Block of Titanium",
-  "item.examplemod.titanium_ingot": "Titanium Ingot"
+  "item.examplemod.amethyst": "Amethyst",
+  "item.examplemod.titanium_ingot": "Titanium Ingot",
+  "itemGroup.examplemod": "Example Mod"
 }

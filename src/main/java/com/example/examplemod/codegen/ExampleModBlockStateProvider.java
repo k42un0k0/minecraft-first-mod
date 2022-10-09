@@ -15,6 +15,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlockWithItem(ExampleBlocks.TITANIUM_BLOCK.get());
+        simpleBlockWithItem(ExampleBlocks.AMETHYST_BLOCK.get());
     }
 
     private void simpleBlockWithItem(Block block) {
