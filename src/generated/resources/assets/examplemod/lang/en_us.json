@@ -5,6 +5,9 @@
   "block.examplemod.titanium_block": "Block of Titanium",
   "commands.hunger.success": "set %s 's food level to %d",
   "item.examplemod.amethyst": "Amethyst",
+  "item.examplemod.firestone": "Firestone",
   "item.examplemod.titanium_ingot": "Titanium Ingot",
-  "itemGroup.examplemod": "Example Mod"
+  "itemGroup.examplemod": "Example Mod",
+  "tooltip.examplemod.firestone": "Hold \u00A7eSHIFT\u00A7r for more Information!",
+  "tooltip.examplemod.firestone_shift": "Might set you on fire. But also might protect from it!"
 }
