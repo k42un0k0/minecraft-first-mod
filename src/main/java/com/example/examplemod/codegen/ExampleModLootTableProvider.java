@@ -7,12 +7,10 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.Items;
 import net.minecraft.loot.*;
 import net.minecraft.loot.functions.ApplyBonus;
 import net.minecraft.loot.functions.SetCount;
@@ -53,6 +51,8 @@ public class ExampleModLootTableProvider extends LootTableProvider {
             dropSelf(ExampleBlocks.TITANIUM_BLOCK.get());
             dropSelf(ExampleBlocks.AMETHYST_BLOCK.get());
             dropSelf(ExampleBlocks.FIRESTONE_BLOCK.get());
+            dropSelf(ExampleBlocks.AMETHYST_STAIRS.get());
+            dropSelf(ExampleBlocks.AMETHYST_WALL.get());
             dropOther(ExampleBlocks.AMETHYST_ORE.get(), ExampleItems.AMETHYST.get());
             add(ExampleBlocks.AMETHYST_ORE.get(), (block) ->
                     createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(ExampleItems.AMETHYST.get())

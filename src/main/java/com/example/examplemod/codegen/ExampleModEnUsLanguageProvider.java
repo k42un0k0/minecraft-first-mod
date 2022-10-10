@@ -16,6 +16,8 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
         add(ExampleItems.AMETHYST.get(), "Amethyst");
         add(ExampleItems.AMETHYST_BLOCK.get(), "Block of Amethyst");
         add(ExampleItems.AMETHYST_ORE.get(), "Amethyst Ore");
+        add(ExampleItems.AMETHYST_STAIRS.get(), "Amethyst Stairs");
+        add(ExampleItems.AMETHYST_WALL.get(), "Amethyst Wall");
         add(ExampleItems.FIRESTONE.get(), "Firestone");
         add(ExampleItems.FIRESTONE_BLOCK.get(), "Block of Firestone");
         add(ExampleItems.TITANIUM_BLOCK.get(), "Block of Titanium");

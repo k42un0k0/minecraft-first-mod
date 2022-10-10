@@ -23,6 +23,14 @@ public class ExampleItems {
             new BlockItem(ExampleBlocks.AMETHYST_BLOCK.get(), new Item.Properties()
                     .tab(ExampleItemGroup.TAB)));
 
+    public static final RegistryObject<Item> AMETHYST_STAIRS = ITEMS.register("amethyst_stairs", () ->
+            new BlockItem(ExampleBlocks.AMETHYST_STAIRS.get(), new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+
+    public static final RegistryObject<Item> AMETHYST_WALL = ITEMS.register("amethyst_wall", () ->
+            new BlockItem(ExampleBlocks.AMETHYST_WALL.get(), new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+
     public static final RegistryObject<Item> AMETHYST_ORE = ITEMS.register("amethyst_ore", () ->
             new BlockItem(ExampleBlocks.AMETHYST_ORE.get(), new Item.Properties()
                     .tab(ExampleItemGroup.TAB)));

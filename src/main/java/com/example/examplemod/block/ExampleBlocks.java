@@ -2,9 +2,7 @@ package com.example.examplemod.block;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.block.custom.FirestoneBlock;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
@@ -43,6 +41,14 @@ public class ExampleBlocks {
     public static final RegistryObject<Block> FIRESTONE_BLOCK = BLOCKS.register("firestone_block",
             () -> new FirestoneBlock(AbstractBlock.Properties.of(Material.METAL)
                     .harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
+
+    public static final RegistryObject<Block> AMETHYST_STAIRS = BLOCKS.register("amethyst_stairs",
+            () -> new StairsBlock(()-> AMETHYST_BLOCK.get().defaultBlockState(),
+                    AbstractBlock.Properties.of(Material.METAL).harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
+
+    public static final RegistryObject<Block> AMETHYST_WALL = BLOCKS.register("amethyst_wall",
+            () -> new WallBlock(AbstractBlock.Properties.of(Material.METAL).harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
+
 
 
     public static void register(IEventBus eventBus) {
