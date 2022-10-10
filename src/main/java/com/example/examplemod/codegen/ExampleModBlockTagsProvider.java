@@ -24,5 +24,7 @@ public class ExampleModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags() {
         this.tag(ExampleTags.Blocks.FIRESTONE_CLICKABLE_BLOCKS)
                 .add(Blocks.OBSIDIAN,Blocks.NETHERRACK, ExampleBlocks.FIRESTONE_BLOCK.get());
+        this.tag(BlockTags.WALLS)
+                .add(ExampleBlocks.AMETHYST_WALL.get());
     }
 }

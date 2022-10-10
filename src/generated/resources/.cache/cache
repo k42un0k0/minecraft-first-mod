@@ -48,3 +48,4 @@ c885ac62c181f4776013193586de50612367a759 data/examplemod/recipes/firestone_from_
 3e330d8f5b2612c209dc41e028982d2924d2e538 data/examplemod/recipes/titanium_ingot_from_titanium_block.json
 83e3aaef6822394536dd9bbba52a844a586b4d3f data/examplemod/tags/blocks/firestone_clickable_blocks.json
 da73f6ba506dbc659d65d0a68659498516c9eaf9 data/forge/tags/items/gems/amethyst.json
+f188ca085bc43da197de3c9c77f31034c3aaa91e data/minecraft/tags/blocks/walls.json
