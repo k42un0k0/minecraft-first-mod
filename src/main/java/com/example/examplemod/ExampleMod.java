@@ -11,6 +11,7 @@ import com.example.examplemod.item.ExampleItems;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemGroup;
@@ -116,6 +117,10 @@ public class ExampleMod {
         if (event.includeServer()) {
             gen.addProvider(new ExampleModRecipeProvider(gen));
             gen.addProvider(new ExampleModLootTableProvider(gen));
+            BlockTagsProvider blockTagsProvider = new ExampleModBlockTagsProvider(gen,MOD_ID,event.getExistingFileHelper());
+            gen.addProvider(blockTagsProvider);
+            gen.addProvider(new ExampleModItemTagsProvider(gen,blockTagsProvider,MOD_ID,event.getExistingFileHelper()));
+
         }
     }
 }

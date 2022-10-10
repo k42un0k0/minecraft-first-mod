@@ -2,6 +2,7 @@ package com.example.examplemod.codegen;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.item.ExampleItems;
+import com.example.examplemod.util.ExampleTags;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -20,7 +21,7 @@ public class ExampleModRecipeProvider extends RecipeProvider {
         addReversibleCraft(consumer,ExampleItems.FIRESTONE_BLOCK.get(),ExampleItems.FIRESTONE.get());
         Item amethyst = ExampleItems.AMETHYST.get();
         ShapedRecipeBuilder.shaped(ExampleItems.AMETHYST_ORE.get())
-                .define('#', amethyst)
+                .define('#', ExampleTags.Items.AMETHYST)
                 .define('S', Items.STONE)
                 .pattern("#S#")
                 .pattern("S#S")

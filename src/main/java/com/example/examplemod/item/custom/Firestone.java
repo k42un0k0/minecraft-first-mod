@@ -1,6 +1,7 @@
 package com.example.examplemod.item.custom;
 
 import com.example.examplemod.ExampleMod;
+import com.example.examplemod.util.ExampleTags;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -63,7 +64,7 @@ public class Firestone extends Item {
     }
 
     private boolean blockIsValidForResistance(BlockState clickedBlock) {
-        return clickedBlock.getBlock() == Blocks.OBSIDIAN;
+        return clickedBlock.is(ExampleTags.Blocks.FIRESTONE_CLICKABLE_BLOCKS);
     }
 
     public static void lightEntityOnFire(Entity entity, int second) {
