@@ -20,5 +20,6 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
         add(ExampleItems.AMETHYST_ORE.get(), "Amethyst Ore");
         add(ExampleItems.AMETHYST.get(), "Amethyst");
         add("itemGroup."+ ExampleMod.MOD_ID, "Example Mod");
+        add("commands.hunger.success",  "set %s 's food level to %d");
     }
 }

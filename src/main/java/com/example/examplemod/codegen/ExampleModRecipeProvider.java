@@ -1,10 +1,10 @@
 package com.example.examplemod.codegen;
 
 import com.example.examplemod.ExampleMod;
-import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.item.ExampleItems;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -17,7 +17,23 @@ public class ExampleModRecipeProvider extends RecipeProvider {
     protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
         addReversibleCraft(consumer,ExampleItems.TITANIUM_BLOCK.get(),ExampleItems.TITANIUM_INGOT.get());
         addReversibleCraft(consumer,ExampleItems.AMETHYST_BLOCK.get(),ExampleItems.AMETHYST.get());
+        Item amethyst = ExampleItems.AMETHYST.get();
+        ShapedRecipeBuilder.shaped(ExampleItems.AMETHYST_ORE.get())
+                .define('#', amethyst)
+                .define('S', Items.STONE)
+                .pattern("#S#")
+                .pattern("S#S")
+                .pattern("#S#")
+                .unlockedBy(getUnlockCriteriaName(amethyst), has(amethyst))
+                .save(consumer);
+    }
 
+    private String getUnlockCriteriaName(Item item){
+        return "has_"+ getItemPath(item);
+    }
+
+    private String getItemPath(Item item){
+        return Objects.requireNonNull(item.getRegistryName()).getPath();
     }
 
     private void addReversibleCraft(Consumer<IFinishedRecipe> consumer, Item block, Item item){
@@ -26,13 +42,13 @@ public class ExampleModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .pattern("###")
                 .pattern("###")
-                .unlockedBy("has_"+ Objects.requireNonNull(item.getRegistryName()).getPath(), has(ExampleItems.TITANIUM_INGOT.get()))
+                .unlockedBy(getUnlockCriteriaName(item), has(item))
                 .save(consumer);
 
         ShapelessRecipeBuilder.shapeless(item, 9)
                 .requires(block)
-                .group(item.getRegistryName().getPath())
-                .unlockedBy("has_"+ Objects.requireNonNull(block.getRegistryName()).getPath(), has(ExampleBlocks.TITANIUM_BLOCK.get()))
+                .group(getItemPath(item))
+                .unlockedBy(getUnlockCriteriaName(block), has(block))
                 .save(consumer, ExampleMod.MOD_ID +":"+ Objects.requireNonNull(item.getRegistryName()).getPath() +"_from_" +Objects.requireNonNull(block.getRegistryName()).getPath() );
 
     }

@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "examplemod:amethyst_block"
+      "examplemod:amethyst_ore"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "examplemod:amethyst_block"
+        "recipe": "examplemod:amethyst_ore"
       }
     }
   },

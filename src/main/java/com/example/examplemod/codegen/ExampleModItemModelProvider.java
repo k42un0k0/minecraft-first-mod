@@ -18,6 +18,7 @@ public class ExampleModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         simpleItem(ExampleItems.TITANIUM_INGOT.get());
         simpleItem(ExampleItems.AMETHYST.get());
+        simpleItem(ExampleItems.FIRESTONE.get());
     }
 
     private void simpleItem(Item item) {

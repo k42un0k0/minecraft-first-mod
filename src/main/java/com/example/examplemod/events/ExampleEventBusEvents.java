@@ -1,12 +1,15 @@
 package com.example.examplemod.events;
 
 import com.example.examplemod.ExampleMod;
+import com.example.examplemod.commands.HungerCommand;
 import com.example.examplemod.entity.ExampleEntityTypes;
 import com.example.examplemod.entity.custom.BuffZombieEntity;
 import com.example.examplemod.entity.custom.PigeonEntity;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.server.command.ConfigCommand;
 
 @Mod.EventBusSubscriber(modid = ExampleMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ExampleEventBusEvents {
