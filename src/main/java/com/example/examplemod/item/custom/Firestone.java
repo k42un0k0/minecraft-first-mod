@@ -6,14 +6,13 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -23,10 +22,9 @@ public class Firestone extends Item {
     }
 
     @Override
-    public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
         World world = context.getLevel();
         if (!world.isClientSide()) {
-
             PlayerEntity player = context.getPlayer();
             BlockState clickedBlock = world.getBlockState((context.getClickedPos()));
             rightClickOnCertainBlockState(clickedBlock, context, player);
@@ -34,7 +32,7 @@ public class Firestone extends Item {
                 player1.broadcastBreakEvent(context.getHand());
             });
         }
-        return super.onItemUseFirst(stack, context);
+        return super.useOn(context);
     }
 
     private void rightClickOnCertainBlockState(BlockState clickedBlock, ItemUseContext context, PlayerEntity player) {
