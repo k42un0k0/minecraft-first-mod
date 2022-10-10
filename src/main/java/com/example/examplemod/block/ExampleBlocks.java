@@ -1,6 +1,7 @@
 package com.example.examplemod.block;
 
 import com.example.examplemod.ExampleMod;
+import com.example.examplemod.block.custom.FirestoneBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -27,7 +28,7 @@ public class ExampleBlocks {
     ));
 
     public static final RegistryObject<Block> AMETHYST_BLOCK = BLOCKS.register("amethyst_block", () -> new Block(AbstractBlock.Properties
-            .of(Material.METAL, MaterialColor.COLOR_PURPLE)
+            .of(Material.STONE, MaterialColor.COLOR_PURPLE)
             .requiresCorrectToolForDrops()
             .strength(5.0F, 6.0F)
             .sound(SoundType.METAL)
@@ -38,6 +39,10 @@ public class ExampleBlocks {
     public static final RegistryObject<Block> AMETHYST_ORE = BLOCKS.register("amethyst_ore",
             () -> new Block(AbstractBlock.Properties.of(Material.STONE)
                     .harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(5f)));
+
+    public static final RegistryObject<Block> FIRESTONE_BLOCK = BLOCKS.register("firestone_block",
+            () -> new FirestoneBlock(AbstractBlock.Properties.of(Material.METAL)
+                    .harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
 
 
     public static void register(IEventBus eventBus) {

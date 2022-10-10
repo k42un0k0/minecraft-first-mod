@@ -1,6 +1,7 @@
 {
   "block.examplemod.amethyst_block": "Block of Amethyst",
   "block.examplemod.amethyst_ore": "Amethyst Ore",
+  "block.examplemod.firestone_block": "Block of Firestone",
   "block.examplemod.titanium_block": "Block of Titanium",
   "commands.hunger.success": "set %s 's food level to %d",
   "item.examplemod.amethyst": "Amethyst",

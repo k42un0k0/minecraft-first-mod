@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "firestone",
+  "ingredients": [
+    {
+      "item": "examplemod:firestone_block"
+    }
+  ],
+  "result": {
+    "item": "examplemod:firestone",
+    "count": 9
+  }
+}

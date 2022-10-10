@@ -17,6 +17,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ExampleBlocks.TITANIUM_BLOCK.get());
         simpleBlockWithItem(ExampleBlocks.AMETHYST_BLOCK.get());
         simpleBlockWithItem(ExampleBlocks.AMETHYST_ORE.get());
+        simpleBlockWithItem(ExampleBlocks.FIRESTONE_BLOCK.get());
     }
 
     private void simpleBlockWithItem(Block block) {

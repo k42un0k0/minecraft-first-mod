@@ -17,6 +17,7 @@ public class ExampleModRecipeProvider extends RecipeProvider {
     protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
         addReversibleCraft(consumer,ExampleItems.TITANIUM_BLOCK.get(),ExampleItems.TITANIUM_INGOT.get());
         addReversibleCraft(consumer,ExampleItems.AMETHYST_BLOCK.get(),ExampleItems.AMETHYST.get());
+        addReversibleCraft(consumer,ExampleItems.FIRESTONE_BLOCK.get(),ExampleItems.FIRESTONE.get());
         Item amethyst = ExampleItems.AMETHYST.get();
         ShapedRecipeBuilder.shaped(ExampleItems.AMETHYST_ORE.get())
                 .define('#', amethyst)

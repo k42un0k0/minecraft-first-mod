@@ -17,6 +17,7 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
         add(ExampleBlocks.TITANIUM_BLOCK.get(), "Block of Titanium");
         add(ExampleItems.TITANIUM_INGOT.get(), "Titanium Ingot");
         add(ExampleBlocks.AMETHYST_BLOCK.get(), "Block of Amethyst");
+        add(ExampleBlocks.FIRESTONE_BLOCK.get(), "Block of Firestone");
         add(ExampleItems.AMETHYST_ORE.get(), "Amethyst Ore");
         add(ExampleItems.AMETHYST.get(), "Amethyst");
         add("itemGroup."+ ExampleMod.MOD_ID, "Example Mod");
