@@ -10,6 +10,7 @@
   "block.examplemod.amethyst_trap_door": "Amethyst Trap Door",
   "block.examplemod.amethyst_wall": "Amethyst Wall",
   "block.examplemod.firestone_block": "Block of Firestone",
+  "block.examplemod.oats_crop": "Oats",
   "block.examplemod.titanium_block": "Block of Titanium",
   "commands.hunger.success": "set %s 's food level to %d",
   "item.examplemod.amethyst": "Amethyst",

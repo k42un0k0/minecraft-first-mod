@@ -76,6 +76,9 @@ public class ExampleItems {
                     .tab(ExampleItemGroup.TAB)));
     public static final RegistryObject<Item> FIRESTONE_BLOCK = registerBlock("firestone_block", ExampleBlocks.FIRESTONE_BLOCK);
 
+    public static final RegistryObject<Item> OATS = ITEMS.register("oats", () ->
+            new BlockItem(ExampleBlocks.OATS.get(), new Item.Properties().food(new Food.Builder().nutrition(1).saturationMod(0.1f).fast().build()).tab(ExampleItemGroup.TAB)));
+
     private static RegistryObject<Item> registerBlock(String name, RegistryObject<Block> blockRegistryObject) {
         return ITEMS.register(name, () ->
                 new BlockItem(blockRegistryObject.get(), new Item.Properties().tab(ExampleItemGroup.TAB)));

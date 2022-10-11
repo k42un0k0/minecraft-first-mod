@@ -11,6 +11,8 @@ import com.example.examplemod.item.ExampleItems;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
@@ -72,6 +74,9 @@ public class ExampleMod {
         ClientPlayerEntity player = Minecraft.getInstance().player;
         RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(), BuffZombieRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.PIGEON.get(), PigeonRenderer::new);
+        RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_TRAP_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ExampleBlocks.OATS.get(), RenderType.cutout());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

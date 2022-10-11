@@ -6,15 +6,20 @@ import com.example.examplemod.item.ExampleItems;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.CropsBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.*;
+import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.loot.functions.ApplyBonus;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.loot.LootTableIdCondition;
 import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -31,6 +36,7 @@ public class ExampleModLootTableProvider extends LootTableProvider {
     public ExampleModLootTableProvider(DataGenerator gen) {
         super(gen);
     }
+
     @Override
     protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables() {
         return ImmutableList.of(Pair.of(ExampleModLootTables::new, LootParameterSets.BLOCK));
@@ -59,6 +65,12 @@ public class ExampleModLootTableProvider extends LootTableProvider {
             dropSelf(ExampleBlocks.AMETHYST_PANE.get());
             dropSelf(ExampleBlocks.AMETHYST_BUTTON.get());
             dropSelf(ExampleBlocks.AMETHYST_PRESSURE_PLATE.get());
+
+            add(ExampleBlocks.OATS.get(),
+                    createCropDrops(ExampleBlocks.OATS.get(), ExampleItems.OATS.get(), ExampleItems.OATS.get(),
+                            BlockStateProperty.hasBlockStateProperties(ExampleBlocks.OATS.get())
+                                    .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 7)))
+            );
             dropOther(ExampleBlocks.AMETHYST_ORE.get(), ExampleItems.AMETHYST.get());
             add(ExampleBlocks.AMETHYST_ORE.get(), (block) ->
                     createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(ExampleItems.AMETHYST.get())

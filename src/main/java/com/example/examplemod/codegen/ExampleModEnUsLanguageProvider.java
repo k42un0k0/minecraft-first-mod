@@ -37,6 +37,7 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
         add(ExampleItems.FIRESTONE_BLOCK.get(), "Block of Firestone");
         add(ExampleItems.TITANIUM_BLOCK.get(), "Block of Titanium");
         add(ExampleItems.TITANIUM_INGOT.get(), "Titanium Ingot");
+        add(ExampleItems.OATS.get(), "Oats");
         add(genKey("itemGroup",ExampleMod.MOD_ID), "Example Mod");
         commands(genKey("hunger","success"),"set %s 's food level to %d");
         tooltip(genKey(ExampleMod.MOD_ID,"firestone"),"Hold \u00A7eSHIFT\u00A7r for more Information!");

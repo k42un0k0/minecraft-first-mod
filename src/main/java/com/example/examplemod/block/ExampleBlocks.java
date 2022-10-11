@@ -2,6 +2,7 @@ package com.example.examplemod.block;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.block.custom.FirestoneBlock;
+import com.example.examplemod.block.custom.OatsBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -67,6 +68,9 @@ public class ExampleBlocks {
     public static final RegistryObject<Block> AMETHYST_PRESSURE_PLATE = BLOCKS.register("amethyst_pressure_plate",
             () ->  new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)));
 
+
+    public static final RegistryObject<Block> OATS = BLOCKS.register("oats_crop",
+            () ->  new OatsBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
 
 
     public static void register(IEventBus eventBus) {
