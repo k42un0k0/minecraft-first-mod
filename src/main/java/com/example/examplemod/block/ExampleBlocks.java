@@ -61,7 +61,8 @@ public class ExampleBlocks {
     public static final RegistryObject<Block> AMETHYST_SLAB = BLOCKS.register("amethyst_slab",
             () -> new SlabBlock(AbstractBlock.Properties.of(Material.METAL).harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
 
-
+    public static final RegistryObject<Block> AMETHYST_BUTTON = BLOCKS.register("amethyst_button",
+            () ->  new WoodButtonBlock(AbstractBlock.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)));
 
 
 
