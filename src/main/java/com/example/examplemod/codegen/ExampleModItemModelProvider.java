@@ -1,6 +1,8 @@
 package com.example.examplemod.codegen;
 
+import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.item.ExampleItems;
+import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -19,8 +21,15 @@ public class ExampleModItemModelProvider extends ItemModelProvider {
         simpleItem(ExampleItems.TITANIUM_INGOT.get());
         simpleItem(ExampleItems.AMETHYST.get());
         simpleItem(ExampleItems.FIRESTONE.get());
+        simpleItem(ExampleItems.AMETHYST_DOOR.get());
+        pane(ExampleItems.AMETHYST_PANE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
     }
 
+    private void pane(Item item, Block block){
+        ResourceLocation name = Objects.requireNonNull(item.getRegistryName());
+        singleTexture(name.getPath(), mcLoc(folder + "/generated"), "layer0", new ResourceLocation(block.getRegistryName().getNamespace(),  "block/" + block.getRegistryName().getPath()));
+
+    }
     private void simpleItem(Item item) {
         ResourceLocation name = Objects.requireNonNull(item.getRegistryName());
         singleTexture(name.getPath(), mcLoc(folder + "/generated"), "layer0", new ResourceLocation(name.getNamespace(), folder + "/" + name.getPath()));

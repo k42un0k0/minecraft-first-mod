@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side_alt",
+  "textures": {
+    "pane": "examplemod:block/amethyst_block",
+    "edge": "examplemod:block/amethyst_block"
+  }
+}

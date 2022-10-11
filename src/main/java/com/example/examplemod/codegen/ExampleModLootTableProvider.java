@@ -53,6 +53,10 @@ public class ExampleModLootTableProvider extends LootTableProvider {
             dropSelf(ExampleBlocks.FIRESTONE_BLOCK.get());
             dropSelf(ExampleBlocks.AMETHYST_STAIRS.get());
             dropSelf(ExampleBlocks.AMETHYST_WALL.get());
+            dropSelf(ExampleBlocks.AMETHYST_DOOR.get());
+            dropSelf(ExampleBlocks.AMETHYST_TRAP_DOOR.get());
+            dropSelf(ExampleBlocks.AMETHYST_SLAB.get());
+            dropSelf(ExampleBlocks.AMETHYST_PANE.get());
             dropOther(ExampleBlocks.AMETHYST_ORE.get(), ExampleItems.AMETHYST.get());
             add(ExampleBlocks.AMETHYST_ORE.get(), (block) ->
                     createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(ExampleItems.AMETHYST.get())

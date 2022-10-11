@@ -49,6 +49,20 @@ public class ExampleBlocks {
     public static final RegistryObject<Block> AMETHYST_WALL = BLOCKS.register("amethyst_wall",
             () -> new WallBlock(AbstractBlock.Properties.of(Material.METAL).harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
 
+    public static final RegistryObject<Block> AMETHYST_DOOR = BLOCKS.register("amethyst_door",
+            () -> new DoorBlock(AbstractBlock.Properties.of(Material.WOOD).harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
+
+    public static final RegistryObject<Block> AMETHYST_TRAP_DOOR = BLOCKS.register("amethyst_trap_door",
+            () -> new TrapDoorBlock(AbstractBlock.Properties.of(Material.WOOD).harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
+
+    public static final RegistryObject<Block> AMETHYST_PANE = BLOCKS.register("amethyst_pane",
+            () -> new PaneBlock(AbstractBlock.Properties.of(Material.METAL).harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
+
+    public static final RegistryObject<Block> AMETHYST_SLAB = BLOCKS.register("amethyst_slab",
+            () -> new SlabBlock(AbstractBlock.Properties.of(Material.METAL).harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
+
+
+
 
 
     public static void register(IEventBus eventBus) {
