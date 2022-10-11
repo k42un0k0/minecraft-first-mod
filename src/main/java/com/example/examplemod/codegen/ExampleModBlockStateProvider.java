@@ -6,6 +6,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.DoorHingeSide;
 import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -31,6 +32,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         slab((SlabBlock) ExampleBlocks.AMETHYST_SLAB.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         pane((PaneBlock) ExampleBlocks.AMETHYST_PANE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         button((AbstractButtonBlock) ExampleBlocks.AMETHYST_BUTTON.get(), ExampleBlocks.AMETHYST_BLOCK.get());
+        pressurePlate((PressurePlateBlock) ExampleBlocks.AMETHYST_PRESSURE_PLATE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
     }
 
     private void stairs(StairsBlock block, Block textureBlock) {
@@ -52,13 +54,13 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
 
     private void button(AbstractButtonBlock block, Block textureBlock) {
         String baseName = block.getRegistryName().toString();
-        ModelFile inventory =  models().singleTexture(baseName + "_inventory", mcLoc("block/button_inventory"), blockTexture(textureBlock));
+        ModelFile inventory = models().singleTexture(baseName + "_inventory", mcLoc("block/button_inventory"), blockTexture(textureBlock));
         simpleBlockItem(block, inventory);
 
         ModelFile pressed = models().singleTexture(baseName + "_pressed", mcLoc("block/button_pressed"), blockTexture(textureBlock));
         ModelFile button = models().singleTexture(baseName, mcLoc("block/button"), blockTexture(textureBlock));
         getVariantBuilder(block).forAllStates(state -> {
-            int yRot = ((int) state.getValue(AbstractButtonBlock.FACING).toYRot() +180)%360;
+            int yRot = ((int) state.getValue(AbstractButtonBlock.FACING).toYRot() + 180) % 360;
             int xRot = 0;
             boolean uvLock = false;
             switch (state.getValue(AbstractButtonBlock.FACE)) {
@@ -81,6 +83,19 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
                     .uvLock(uvLock)
                     .build();
         });
+    }
+
+    private void pressurePlate(PressurePlateBlock block, Block textureBlock) {
+        String baseName = block.getRegistryName().toString();
+        ModelFile plate = models().singleTexture(baseName, mcLoc("block/pressure_plate_up"), blockTexture(textureBlock));
+        simpleBlockItem(block, plate);
+
+        ModelFile down = models().singleTexture(baseName + "_down", mcLoc("block/pressure_plate_down"), blockTexture(textureBlock));
+        getVariantBuilder(block)
+                .partialState().with(PressurePlateBlock.POWERED, true)
+                .modelForState().modelFile(down).addModel()
+                .partialState().with(PressurePlateBlock.POWERED, false)
+                .modelForState().modelFile(plate).addModel();
     }
 
     private void trapdoor(TrapDoorBlock block, Block textureBlock) {

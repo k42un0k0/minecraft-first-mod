@@ -40,6 +40,7 @@ public class ExampleItems {
 
     public static final RegistryObject<Item> AMETHYST_SLAB = registerBlock("amethyst_slab", ExampleBlocks.AMETHYST_SLAB);
     public static final RegistryObject<Item> AMETHYST_BUTTON = registerBlock("amethyst_button", ExampleBlocks.AMETHYST_BUTTON);
+    public static final RegistryObject<Item> AMETHYST_PRESSURE_PLATE = registerBlock("amethyst_pressure_plate", ExampleBlocks.AMETHYST_PRESSURE_PLATE);
 
     public static final RegistryObject<Item> FIRESTONE = ITEMS.register("firestone", () ->
             new Firestone(new Item.Properties().durability(8)

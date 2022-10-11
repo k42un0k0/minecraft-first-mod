@@ -64,6 +64,9 @@ public class ExampleBlocks {
     public static final RegistryObject<Block> AMETHYST_BUTTON = BLOCKS.register("amethyst_button",
             () ->  new WoodButtonBlock(AbstractBlock.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)));
 
+    public static final RegistryObject<Block> AMETHYST_PRESSURE_PLATE = BLOCKS.register("amethyst_pressure_plate",
+            () ->  new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)));
+
 
 
     public static void register(IEventBus eventBus) {
