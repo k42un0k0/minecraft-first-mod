@@ -4,8 +4,7 @@ import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.item.custom.Firestone;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,11 +25,11 @@ public class ExampleItems {
 
     public static final RegistryObject<Item> AMETHYST_BLOCK = registerBlock("amethyst_block", ExampleBlocks.AMETHYST_BLOCK);
 
-    public static final RegistryObject<Item> AMETHYST_ORE =registerBlock("amethyst_ore", ExampleBlocks.AMETHYST_ORE);
+    public static final RegistryObject<Item> AMETHYST_ORE = registerBlock("amethyst_ore", ExampleBlocks.AMETHYST_ORE);
 
-    public static final RegistryObject<Item> AMETHYST_STAIRS =registerBlock("amethyst_stairs", ExampleBlocks.AMETHYST_STAIRS);
+    public static final RegistryObject<Item> AMETHYST_STAIRS = registerBlock("amethyst_stairs", ExampleBlocks.AMETHYST_STAIRS);
 
-    public static final RegistryObject<Item> AMETHYST_WALL =registerBlock("amethyst_wall", ExampleBlocks.AMETHYST_WALL);
+    public static final RegistryObject<Item> AMETHYST_WALL = registerBlock("amethyst_wall", ExampleBlocks.AMETHYST_WALL);
 
     public static final RegistryObject<Item> AMETHYST_DOOR = registerBlock("amethyst_door", ExampleBlocks.AMETHYST_DOOR);
 
@@ -46,6 +45,21 @@ public class ExampleItems {
             new Firestone(new Item.Properties().durability(8)
                     .tab(ExampleItemGroup.TAB)));
 
+    public static final RegistryObject<Item> AMETHYST_SWORD = ITEMS.register("amethyst_sword", () ->
+            new SwordItem(ExampleItemTier.AMETHYST, 2, 3f, new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+    public static final RegistryObject<Item> AMETHYST_PICKAXE = ITEMS.register("amethyst_pickaxe", () ->
+            new PickaxeItem(ExampleItemTier.AMETHYST, 0, -1f, new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+    public static final RegistryObject<Item> AMETHYST_AXE = ITEMS.register("amethyst_axe", () ->
+            new AxeItem(ExampleItemTier.AMETHYST, 4, -6f, new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+    public static final RegistryObject<Item> AMETHYST_SHOVEL = ITEMS.register("amethyst_shovel", () ->
+            new ShovelItem(ExampleItemTier.AMETHYST, 0, -1f, new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+    public static final RegistryObject<Item> AMETHYST_HOE = ITEMS.register("amethyst_hoe", () ->
+            new HoeItem(ExampleItemTier.AMETHYST, 0, 0f, new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
     public static final RegistryObject<Item> FIRESTONE_BLOCK = registerBlock("firestone_block", ExampleBlocks.FIRESTONE_BLOCK);
 
     private static RegistryObject<Item> registerBlock(String name, RegistryObject<Block> blockRegistryObject) {

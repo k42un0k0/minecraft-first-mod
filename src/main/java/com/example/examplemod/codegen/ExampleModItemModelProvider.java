@@ -22,6 +22,11 @@ public class ExampleModItemModelProvider extends ItemModelProvider {
         simpleItem(ExampleItems.AMETHYST.get());
         simpleItem(ExampleItems.FIRESTONE.get());
         simpleItem(ExampleItems.AMETHYST_DOOR.get());
+        simpleItem(ExampleItems.AMETHYST_SWORD.get());
+        simpleItem(ExampleItems.AMETHYST_AXE.get());
+        simpleItem(ExampleItems.AMETHYST_PICKAXE.get());
+        simpleItem(ExampleItems.AMETHYST_HOE.get());
+        simpleItem(ExampleItems.AMETHYST_SHOVEL.get());
         pane(ExampleItems.AMETHYST_PANE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
     }
 
