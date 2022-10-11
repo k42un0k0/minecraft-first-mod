@@ -4,6 +4,7 @@ import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.item.custom.Firestone;
 import net.minecraft.block.Block;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -59,6 +60,19 @@ public class ExampleItems {
                     .tab(ExampleItemGroup.TAB)));
     public static final RegistryObject<Item> AMETHYST_HOE = ITEMS.register("amethyst_hoe", () ->
             new HoeItem(ExampleItemTier.AMETHYST, 0, 0f, new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+
+    public static final RegistryObject<Item> AMETHYST_BOOTS = ITEMS.register("amethyst_boots", () ->
+            new ArmorItem(ExampleArmorMaterial.AMETHYST, EquipmentSlotType.FEET, new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+    public static final RegistryObject<Item> AMETHYST_HELMET = ITEMS.register("amethyst_helmet", () ->
+            new ArmorItem(ExampleArmorMaterial.AMETHYST, EquipmentSlotType.HEAD, new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+    public static final RegistryObject<Item> AMETHYST_CHESTPLATE = ITEMS.register("amethyst_chestplate", () ->
+            new ArmorItem(ExampleArmorMaterial.AMETHYST, EquipmentSlotType.CHEST, new Item.Properties()
+                    .tab(ExampleItemGroup.TAB)));
+    public static final RegistryObject<Item> AMETHYST_LEGGINGS = ITEMS.register("amethyst_leggings", () ->
+            new ArmorItem(ExampleArmorMaterial.AMETHYST, EquipmentSlotType.LEGS, new Item.Properties()
                     .tab(ExampleItemGroup.TAB)));
     public static final RegistryObject<Item> FIRESTONE_BLOCK = registerBlock("firestone_block", ExampleBlocks.FIRESTONE_BLOCK);
 
