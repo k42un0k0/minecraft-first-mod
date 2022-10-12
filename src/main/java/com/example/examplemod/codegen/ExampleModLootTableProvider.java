@@ -16,7 +16,9 @@ import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.BlockStateProperty;
+import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.loot.functions.ApplyBonus;
+import net.minecraft.loot.functions.ExplosionDecay;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.loot.LootTableIdCondition;
@@ -65,17 +67,22 @@ public class ExampleModLootTableProvider extends LootTableProvider {
             dropSelf(ExampleBlocks.AMETHYST_PANE.get());
             dropSelf(ExampleBlocks.AMETHYST_BUTTON.get());
             dropSelf(ExampleBlocks.AMETHYST_PRESSURE_PLATE.get());
-
+            ILootCondition.IBuilder builder = BlockStateProperty.hasBlockStateProperties(ExampleBlocks.OATS.get())
+                    .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 7));
             add(ExampleBlocks.OATS.get(),
-                    createCropDrops(ExampleBlocks.OATS.get(), ExampleItems.OATS.get(), ExampleItems.OATS.get(),
-                            BlockStateProperty.hasBlockStateProperties(ExampleBlocks.OATS.get())
-                                    .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 7)))
+                    LootTable.lootTable()
+                            .withPool(LootPool.lootPool().add(
+                                    ItemLootEntry.lootTableItem(ExampleItems.OATS.get())
+                                            .when(builder).otherwise(ItemLootEntry.lootTableItem(ExampleItems.OATS.get()))))
+                            .withPool(LootPool.lootPool().when(builder).add(
+                                    ItemLootEntry.lootTableItem(ExampleItems.OATS.get()).apply(ApplyBonus.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 5))))
+                            .apply(ExplosionDecay.explosionDecay())
             );
-            dropOther(ExampleBlocks.AMETHYST_ORE.get(), ExampleItems.AMETHYST.get());
             add(ExampleBlocks.AMETHYST_ORE.get(), (block) ->
-                    createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(ExampleItems.AMETHYST.get())
+                    createSilkTouchDispatchTable(block, ItemLootEntry.lootTableItem(ExampleItems.AMETHYST.get())
                             .apply(SetCount.setCount(RandomValueRange.between(2.0F, 4.0F)))
-                            .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                            .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+                            .apply(ExplosionDecay.explosionDecay())));
         }
     }
 

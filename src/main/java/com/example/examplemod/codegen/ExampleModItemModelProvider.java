@@ -31,6 +31,7 @@ public class ExampleModItemModelProvider extends ItemModelProvider {
         simpleItem(ExampleItems.AMETHYST_CHESTPLATE.get());
         simpleItem(ExampleItems.AMETHYST_LEGGINGS.get());
         simpleItem(ExampleItems.AMETHYST_BOOTS.get());
+        simpleItem(ExampleItems.OATS.get());
         pane(ExampleItems.AMETHYST_PANE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
     }
 

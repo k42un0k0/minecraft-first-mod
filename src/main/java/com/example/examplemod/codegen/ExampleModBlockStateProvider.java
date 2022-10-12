@@ -3,16 +3,13 @@ package com.example.examplemod.codegen;
 import com.example.examplemod.block.ExampleBlocks;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.DoorHingeSide;
-import net.minecraft.state.properties.DoubleBlockHalf;
-import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraft.state.properties.AttachFace;
+
+import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
 
 public class ExampleModBlockStateProvider extends BlockStateProvider {
     public ExampleModBlockStateProvider(DataGenerator gen, String modId, ExistingFileHelper exFileHelper) {
@@ -33,6 +30,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         pane((PaneBlock) ExampleBlocks.AMETHYST_PANE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         button((AbstractButtonBlock) ExampleBlocks.AMETHYST_BUTTON.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         pressurePlate((PressurePlateBlock) ExampleBlocks.AMETHYST_PRESSURE_PLATE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
+        crop((CropsBlock) ExampleBlocks.OATS.get());
     }
 
     private void stairs(StairsBlock block, Block textureBlock) {
@@ -50,6 +48,20 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
     private void door(DoorBlock block, Block textureBlock) {
         //MEMO: doorのitem modelはitem側で生成
         doorBlock(block, blockTexture(textureBlock), blockTexture(textureBlock));
+    }
+
+    private ResourceLocation cropStageTexture(Block block, int age) {
+        ResourceLocation name = block.getRegistryName();
+        return new ResourceLocation(name.getNamespace(), BLOCK_FOLDER + "/" + name.getPath().replace("_crop", "_stage") + age);
+    }
+
+    private void crop(CropsBlock block) {
+        getVariantBuilder(block).forAllStates(state -> {
+            int age = state.getValue(CropsBlock.AGE);
+            ResourceLocation loc = cropStageTexture(block, age);
+            ModelFile model = models().withExistingParent(loc.toString(), mcLoc("block/crop")).texture("crop", loc);
+            return ConfiguredModel.builder().modelFile(model).build();
+        });
     }
 
     private void button(AbstractButtonBlock block, Block textureBlock) {
