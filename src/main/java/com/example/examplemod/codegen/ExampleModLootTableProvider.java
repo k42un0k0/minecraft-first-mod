@@ -83,6 +83,12 @@ public class ExampleModLootTableProvider extends LootTableProvider {
                             .apply(SetCount.setCount(RandomValueRange.between(2.0F, 4.0F)))
                             .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
                             .apply(ExplosionDecay.explosionDecay())));
+
+            dropSelf(ExampleBlocks.REDWOOD_LOG.get());
+            dropSelf(ExampleBlocks.REDWOOD_WOOD.get());
+            dropSelf(ExampleBlocks.STRIPPED_REDWOOD_LOG.get());
+            dropSelf(ExampleBlocks.STRIPPED_REDWOOD_WOOD.get());
+            dropSelf(ExampleBlocks.REDWOOD_PLANKS.get());
         }
     }
 

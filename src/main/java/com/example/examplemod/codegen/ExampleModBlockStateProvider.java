@@ -3,6 +3,8 @@ package com.example.examplemod.codegen;
 import com.example.examplemod.block.ExampleBlocks;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -31,6 +33,9 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         button((AbstractButtonBlock) ExampleBlocks.AMETHYST_BUTTON.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         pressurePlate((PressurePlateBlock) ExampleBlocks.AMETHYST_PRESSURE_PLATE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         crop((CropsBlock) ExampleBlocks.OATS.get());
+        simpleBlockWithItem(ExampleBlocks.REDWOOD_PLANKS.get());
+        logAndWood((RotatedPillarBlock) ExampleBlocks.REDWOOD_LOG.get(), (RotatedPillarBlock) ExampleBlocks.REDWOOD_WOOD.get());
+        logAndWood((RotatedPillarBlock) ExampleBlocks.STRIPPED_REDWOOD_LOG.get(), (RotatedPillarBlock) ExampleBlocks.STRIPPED_REDWOOD_WOOD.get());
     }
 
     private void stairs(StairsBlock block, Block textureBlock) {
@@ -41,7 +46,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
 
     private void wall(WallBlock block, Block textureBlock) {
         wallBlock(block, blockTexture(textureBlock));
-        ModelFile inventory = models().wallInventory(block.getRegistryName().toString() + "_inventory", blockTexture(textureBlock));
+        ModelFile inventory = models().wallInventory(name(block) + "_inventory", blockTexture(textureBlock));
         simpleBlockItem(block, inventory);
     }
 
@@ -50,27 +55,33 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         doorBlock(block, blockTexture(textureBlock), blockTexture(textureBlock));
     }
 
-    private ResourceLocation cropStageTexture(Block block, int age) {
-        ResourceLocation name = block.getRegistryName();
-        return new ResourceLocation(name.getNamespace(), BLOCK_FOLDER + "/" + name.getPath().replace("_crop", "_stage") + age);
+    private String name(Block block) {
+        return block.getRegistryName().toString();
+    }
+
+    private ResourceLocation extend(ResourceLocation rl, String suffix) {
+        return new ResourceLocation(rl.getNamespace(), rl.getPath() + suffix);
+    }
+
+    private ResourceLocation replace(ResourceLocation rl, String target, String replacement) {
+        return new ResourceLocation(rl.getNamespace(), rl.getPath().replace(target, replacement));
     }
 
     private void crop(CropsBlock block) {
         getVariantBuilder(block).forAllStates(state -> {
             int age = state.getValue(CropsBlock.AGE);
-            ResourceLocation loc = cropStageTexture(block, age);
+            ResourceLocation loc = extend(replace(blockTexture(block), "_crop", "_stage"), String.valueOf(age));
             ModelFile model = models().withExistingParent(loc.toString(), mcLoc("block/crop")).texture("crop", loc);
             return ConfiguredModel.builder().modelFile(model).build();
         });
     }
 
     private void button(AbstractButtonBlock block, Block textureBlock) {
-        String baseName = block.getRegistryName().toString();
-        ModelFile inventory = models().singleTexture(baseName + "_inventory", mcLoc("block/button_inventory"), blockTexture(textureBlock));
+        ModelFile inventory = models().singleTexture(extend(blockTexture(block), "_inventory").toString(), mcLoc("block/button_inventory"), blockTexture(textureBlock));
         simpleBlockItem(block, inventory);
 
-        ModelFile pressed = models().singleTexture(baseName + "_pressed", mcLoc("block/button_pressed"), blockTexture(textureBlock));
-        ModelFile button = models().singleTexture(baseName, mcLoc("block/button"), blockTexture(textureBlock));
+        ModelFile pressed = models().singleTexture(extend(blockTexture(block), "_pressed").toString(), mcLoc("block/button_pressed"), blockTexture(textureBlock));
+        ModelFile button = models().singleTexture(name(block), mcLoc("block/button"), blockTexture(textureBlock));
         getVariantBuilder(block).forAllStates(state -> {
             int yRot = ((int) state.getValue(AbstractButtonBlock.FACING).toYRot() + 180) % 360;
             int xRot = 0;
@@ -98,11 +109,10 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
     }
 
     private void pressurePlate(PressurePlateBlock block, Block textureBlock) {
-        String baseName = block.getRegistryName().toString();
-        ModelFile plate = models().singleTexture(baseName, mcLoc("block/pressure_plate_up"), blockTexture(textureBlock));
+        ModelFile plate = models().singleTexture(name(block), mcLoc("block/pressure_plate_up"), blockTexture(textureBlock));
         simpleBlockItem(block, plate);
 
-        ModelFile down = models().singleTexture(baseName + "_down", mcLoc("block/pressure_plate_down"), blockTexture(textureBlock));
+        ModelFile down = models().singleTexture(extend(blockTexture(block), "_down").toString(), mcLoc("block/pressure_plate_down"), blockTexture(textureBlock));
         getVariantBuilder(block)
                 .partialState().with(PressurePlateBlock.POWERED, true)
                 .modelForState().modelFile(down).addModel()
@@ -133,5 +143,13 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, model);
     }
 
+    private void logAndWood(RotatedPillarBlock log, RotatedPillarBlock wood) {
+        logBlock(log);
+        ModelFile model = models().getExistingFile(blockTexture(log));
+        simpleBlockItem(log, model);
+        ModelFile strippedModel = models().cubeColumn(name(wood), blockTexture(log), blockTexture(log));
+        axisBlock(wood, strippedModel, strippedModel);
+        simpleBlockItem(wood, strippedModel);
+    }
 
 }
