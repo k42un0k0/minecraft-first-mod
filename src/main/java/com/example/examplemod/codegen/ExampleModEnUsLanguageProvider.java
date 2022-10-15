@@ -43,6 +43,8 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
         add(ExampleItems.REDWOOD_PLANKS.get(), "Redwood Planks");
         add(ExampleItems.STRIPPED_REDWOOD_LOG.get(), "Stripped Redwood Log");
         add(ExampleItems.STRIPPED_REDWOOD_WOOD.get(), "Stripped Redwood Wood");
+        add(ExampleItems.REDWOOD_SAPLING.get(), "Redwood Sapling");
+        add(ExampleItems.REDWOOD_LEAVES.get(), "Redwood Leaves");
         add(genKey("itemGroup",ExampleMod.MOD_ID), "Example Mod");
         commands(genKey("hunger","success"),"set %s 's food level to %d");
         tooltip(genKey(ExampleMod.MOD_ID,"firestone"),"Hold \u00A7eSHIFT\u00A7r for more Information!");

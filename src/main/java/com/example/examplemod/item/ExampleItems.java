@@ -77,6 +77,8 @@ public class ExampleItems {
     public static final RegistryObject<Item> STRIPPED_REDWOOD_WOOD = registerBlockItem("stripped_redwood_wood", ExampleBlocks.STRIPPED_REDWOOD_WOOD);
     public static final RegistryObject<Item> REDWOOD_PLANKS = registerBlockItem("redwood_planks", ExampleBlocks.REDWOOD_PLANKS);
 
+    public static final RegistryObject<Item> REDWOOD_SAPLING = registerBlockItem("redwood_sapling", ExampleBlocks.REDWOOD_SAPLING);
+    public static final RegistryObject<Item> REDWOOD_LEAVES = registerBlockItem("redwood_leaves", ExampleBlocks.REDWOOD_LEAVES);
 
     private static RegistryObject<Item> registerBlockItem(String name, RegistryObject<Block> blockRegistryObject) {
         return registerItem(name, () ->

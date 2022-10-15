@@ -3,6 +3,7 @@ package com.example.examplemod.block;
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.block.custom.FirestoneBlock;
 import com.example.examplemod.block.custom.OatsBlock;
+import com.example.examplemod.block.custom.trees.RedwoodTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -84,6 +85,15 @@ public class ExampleBlocks {
     public static final RegistryObject<Block> REDWOOD_PLANKS = registerBlock("redwood_planks",
             () ->  new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_PLANKS)));
 
+
+
+    public static final RegistryObject<Block> REDWOOD_LEAVES = registerBlock("redwood_leaves",
+            () -> new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES).strength(0.2f)
+                .randomTicks().sound(SoundType.GRASS).noCollission()));
+
+    public static final RegistryObject<Block> REDWOOD_SAPLING = registerBlock("redwood_sapling",
+            () -> new SaplingBlock(new RedwoodTree(), AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
+            
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> sup){
         return BLOCKS.register(name, sup);
     }

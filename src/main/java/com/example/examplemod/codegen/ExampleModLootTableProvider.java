@@ -35,6 +35,8 @@ import java.util.stream.Collectors;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class ExampleModLootTableProvider extends LootTableProvider {
+    private static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
+
     public ExampleModLootTableProvider(DataGenerator gen) {
         super(gen);
     }
@@ -89,6 +91,9 @@ public class ExampleModLootTableProvider extends LootTableProvider {
             dropSelf(ExampleBlocks.STRIPPED_REDWOOD_LOG.get());
             dropSelf(ExampleBlocks.STRIPPED_REDWOOD_WOOD.get());
             dropSelf(ExampleBlocks.REDWOOD_PLANKS.get());
+            dropSelf(ExampleBlocks.REDWOOD_SAPLING.get());
+            dropSelf(ExampleBlocks.REDWOOD_LEAVES.get());
+            add(ExampleBlocks.REDWOOD_LEAVES.get(), (block) -> createLeavesDrops(block, ExampleBlocks.REDWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         }
     }
 

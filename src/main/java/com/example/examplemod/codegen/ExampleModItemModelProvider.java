@@ -44,4 +44,5 @@ public class ExampleModItemModelProvider extends ItemModelProvider {
         ResourceLocation name = Objects.requireNonNull(item.getRegistryName());
         singleTexture(name.getPath(), mcLoc(folder + "/generated"), "layer0", new ResourceLocation(name.getNamespace(), folder + "/" + name.getPath()));
     }
+
 }

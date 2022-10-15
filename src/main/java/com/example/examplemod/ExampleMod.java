@@ -8,6 +8,7 @@ import com.example.examplemod.entity.custom.PigeonEntity;
 import com.example.examplemod.entity.render.BuffZombieRenderer;
 import com.example.examplemod.entity.render.PigeonRenderer;
 import com.example.examplemod.item.ExampleItems;
+import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
@@ -16,6 +17,7 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -65,7 +67,11 @@ public class ExampleMod {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", net.minecraft.block.Blocks.DIRT.getRegistryName());
-
+        event.enqueueWork(() -> {
+            AxeItem.STRIPABLES = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.STRIPABLES)
+                    .put(ExampleBlocks.REDWOOD_LOG.get(), ExampleBlocks.STRIPPED_REDWOOD_LOG.get())
+                    .put(ExampleBlocks.REDWOOD_WOOD.get(), ExampleBlocks.STRIPPED_REDWOOD_WOOD.get()).build();
+        });
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -77,6 +83,8 @@ public class ExampleMod {
         RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_DOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_TRAP_DOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ExampleBlocks.OATS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_LEAVES.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_SAPLING.get(), RenderType.cutout());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
@@ -101,6 +109,7 @@ public class ExampleMod {
         // do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
+
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -111,6 +120,7 @@ public class ExampleMod {
             LOGGER.info("HELLO from Register Block");
         }
     }
+
     private void registerProviders(GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
         if (event.includeClient()) {
@@ -122,9 +132,9 @@ public class ExampleMod {
         if (event.includeServer()) {
             gen.addProvider(new ExampleModRecipeProvider(gen));
             gen.addProvider(new ExampleModLootTableProvider(gen));
-            BlockTagsProvider blockTagsProvider = new ExampleModBlockTagsProvider(gen,MOD_ID,event.getExistingFileHelper());
+            BlockTagsProvider blockTagsProvider = new ExampleModBlockTagsProvider(gen, MOD_ID, event.getExistingFileHelper());
             gen.addProvider(blockTagsProvider);
-            gen.addProvider(new ExampleModItemTagsProvider(gen,blockTagsProvider,MOD_ID,event.getExistingFileHelper()));
+            gen.addProvider(new ExampleModItemTagsProvider(gen, blockTagsProvider, MOD_ID, event.getExistingFileHelper()));
 
         }
     }
