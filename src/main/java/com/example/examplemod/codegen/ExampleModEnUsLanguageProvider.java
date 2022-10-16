@@ -1,7 +1,6 @@
 package com.example.examplemod.codegen;
 
 import com.example.examplemod.ExampleMod;
-import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.item.ExampleItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -20,10 +19,11 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
         add(ExampleItems.AMETHYST_WALL.get(), "Amethyst Wall");
         add(ExampleItems.AMETHYST_PANE.get(), "Amethyst Pane");
         add(ExampleItems.AMETHYST_DOOR.get(), "Amethyst Door");
-        add(ExampleItems.AMETHYST_TRAP_DOOR.get(), "Amethyst Trap Door");
+        add(ExampleItems.AMETHYST_TRAPDOOR.get(), "Amethyst Trap Door");
         add(ExampleItems.AMETHYST_BUTTON.get(), "Amethyst Button");
         add(ExampleItems.AMETHYST_SLAB.get(), "Amethyst Slab");
         add(ExampleItems.AMETHYST_PRESSURE_PLATE.get(), "Amethyst Pressure Plate");
+        add(ExampleItems.AMETHYST_HORSE_ARMOR.get(), "Amethyst Horse Armor");
         add(ExampleItems.AMETHYST_SWORD.get(), "Amethyst Sword");
         add(ExampleItems.AMETHYST_PICKAXE.get(), "Amethyst Pickaxe");
         add(ExampleItems.AMETHYST_AXE.get(), "Amethyst Axe");

@@ -53,10 +53,10 @@ public class ExampleBlocks {
             () -> new WallBlock(AbstractBlock.Properties.copy(AMETHYST_BLOCK.get())));
 
     public static final RegistryObject<Block> AMETHYST_DOOR = registerBlock("amethyst_door",
-            () -> new DoorBlock(AbstractBlock.Properties.copy(AMETHYST_BLOCK.get())));
+            () -> new DoorBlock(AbstractBlock.Properties.copy(AMETHYST_BLOCK.get()).noOcclusion()));
 
-    public static final RegistryObject<Block> AMETHYST_TRAP_DOOR = registerBlock("amethyst_trap_door",
-            () -> new TrapDoorBlock(AbstractBlock.Properties.copy(AMETHYST_BLOCK.get())));
+    public static final RegistryObject<Block> AMETHYST_TRAPDOOR = registerBlock("amethyst_trapdoor",
+            () -> new TrapDoorBlock(AbstractBlock.Properties.copy(AMETHYST_BLOCK.get()).noOcclusion()));
 
     public static final RegistryObject<Block> AMETHYST_PANE = registerBlock("amethyst_pane",
             () -> new PaneBlock(AbstractBlock.Properties.copy(AMETHYST_BLOCK.get())));
@@ -89,7 +89,7 @@ public class ExampleBlocks {
 
     public static final RegistryObject<Block> REDWOOD_LEAVES = registerBlock("redwood_leaves",
             () -> new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES).strength(0.2f)
-                .randomTicks().sound(SoundType.GRASS).noCollission()));
+                .randomTicks().sound(SoundType.GRASS).noOcclusion()));
 
     public static final RegistryObject<Block> REDWOOD_SAPLING = registerBlock("redwood_sapling",
             () -> new SaplingBlock(new RedwoodTree(), AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));

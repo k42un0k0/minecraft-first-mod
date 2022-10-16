@@ -3,8 +3,6 @@ package com.example.examplemod.codegen;
 import com.example.examplemod.block.ExampleBlocks;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -26,8 +24,8 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ExampleBlocks.FIRESTONE_BLOCK.get());
         stairs((StairsBlock) ExampleBlocks.AMETHYST_STAIRS.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         wall((WallBlock) ExampleBlocks.AMETHYST_WALL.get(), ExampleBlocks.AMETHYST_BLOCK.get());
-        door((DoorBlock) ExampleBlocks.AMETHYST_DOOR.get(), ExampleBlocks.AMETHYST_BLOCK.get());
-        trapdoor((TrapDoorBlock) ExampleBlocks.AMETHYST_TRAP_DOOR.get(), ExampleBlocks.AMETHYST_BLOCK.get());
+        door((DoorBlock) ExampleBlocks.AMETHYST_DOOR.get());
+        trapdoor((TrapDoorBlock) ExampleBlocks.AMETHYST_TRAPDOOR.get());
         slab((SlabBlock) ExampleBlocks.AMETHYST_SLAB.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         pane((PaneBlock) ExampleBlocks.AMETHYST_PANE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         button((AbstractButtonBlock) ExampleBlocks.AMETHYST_BUTTON.get(), ExampleBlocks.AMETHYST_BLOCK.get());
@@ -52,9 +50,9 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, inventory);
     }
 
-    private void door(DoorBlock block, Block textureBlock) {
+    private void door(DoorBlock block) {
         //MEMO: doorのitem modelはitem側で生成
-        doorBlock(block, blockTexture(textureBlock), blockTexture(textureBlock));
+        doorBlock(block, extend(blockTexture(block),"_bottom"), extend(blockTexture(block),"_top"));
     }
 
     private String name(Block block) {
@@ -122,8 +120,8 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
                 .modelForState().modelFile(plate).addModel();
     }
 
-    private void trapdoor(TrapDoorBlock block, Block textureBlock) {
-        trapdoorBlock(block, blockTexture(textureBlock), true);
+    private void trapdoor(TrapDoorBlock block) {
+        trapdoorBlock(block, blockTexture(block), true);
         ResourceLocation location = new ResourceLocation(block.getRegistryName().getNamespace(), block.getRegistryName().getPath() + "_bottom");
         ModelFile bottom = models().getExistingFile(location);
         simpleBlockItem(block, bottom);

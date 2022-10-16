@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "examplemod:amethyst_trap_door"
+          "name": "examplemod:amethyst_trapdoor"
         }
       ],
       "conditions": [

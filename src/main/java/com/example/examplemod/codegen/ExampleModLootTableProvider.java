@@ -8,7 +8,6 @@ import com.mojang.datafixers.util.Pair;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
@@ -21,7 +20,6 @@ import net.minecraft.loot.functions.ApplyBonus;
 import net.minecraft.loot.functions.ExplosionDecay;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.loot.LootTableIdCondition;
 import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -64,7 +62,7 @@ public class ExampleModLootTableProvider extends LootTableProvider {
             dropSelf(ExampleBlocks.AMETHYST_STAIRS.get());
             dropSelf(ExampleBlocks.AMETHYST_WALL.get());
             dropSelf(ExampleBlocks.AMETHYST_DOOR.get());
-            dropSelf(ExampleBlocks.AMETHYST_TRAP_DOOR.get());
+            dropSelf(ExampleBlocks.AMETHYST_TRAPDOOR.get());
             dropSelf(ExampleBlocks.AMETHYST_SLAB.get());
             dropSelf(ExampleBlocks.AMETHYST_PANE.get());
             dropSelf(ExampleBlocks.AMETHYST_BUTTON.get());
