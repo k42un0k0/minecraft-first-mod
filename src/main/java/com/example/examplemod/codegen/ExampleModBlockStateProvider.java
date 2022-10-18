@@ -34,7 +34,8 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ExampleBlocks.REDWOOD_PLANKS.get());
         logAndWood((RotatedPillarBlock) ExampleBlocks.REDWOOD_LOG.get(), (RotatedPillarBlock) ExampleBlocks.REDWOOD_WOOD.get());
         logAndWood((RotatedPillarBlock) ExampleBlocks.STRIPPED_REDWOOD_LOG.get(), (RotatedPillarBlock) ExampleBlocks.STRIPPED_REDWOOD_WOOD.get());
-        sapling(ExampleBlocks.REDWOOD_SAPLING.get());
+        cross(ExampleBlocks.REDWOOD_SAPLING.get());
+        cross(ExampleBlocks.HYACINTH.get());
         leaves(ExampleBlocks.REDWOOD_LEAVES.get());
     }
 
@@ -152,7 +153,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(wood, strippedModel);
     }
 
-    private void sapling(Block block){
+    private void cross(Block block){
         ModelFile model = models().cross(name(block),blockTexture(block));
         simpleBlock(block,model);
         itemModels().withExistingParent(name(block),"generated").texture("layer0",blockTexture(block));

@@ -12,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.AxeItem;
@@ -79,6 +80,7 @@ public class ExampleMod {
         RenderTypeLookup.setRenderLayer(ExampleBlocks.OATS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_LEAVES.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_SAPLING.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ExampleBlocks.HYACINTH.get(), RenderType.cutout());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

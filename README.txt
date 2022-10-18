@@ -48,3 +48,4 @@ Forge Discord: https://discord.gg/UvedJ9m
 [参考](https://www.tntmodders.com/tutorial/)
 [javadoc 1.15](https://nekoyue.github.io/ForgeJavaDocs-NG/javadoc/1.15.2/)
 [動画参考](https://www.youtube.com/watch?v=6aOcWSldlYs&list=PLKGarocXCE1EMxeBvqsOWZVkYD_Vd_uwW&index=38)
+[MCP関係srg](https://mcpbot.unascribed.com/)

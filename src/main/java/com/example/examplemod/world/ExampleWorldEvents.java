@@ -1,6 +1,7 @@
 package com.example.examplemod.world;
 
 import com.example.examplemod.ExampleMod;
+import com.example.examplemod.world.gen.ExampleFlowerGeneration;
 import com.example.examplemod.world.gen.ExampleOreGeneration;
 import com.example.examplemod.world.gen.ExampleTreeGeneration;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -12,6 +13,7 @@ public class ExampleWorldEvents {
     @SubscribeEvent
     public static void biomeLoadingEvent(final BiomeLoadingEvent event) {
         ExampleOreGeneration.generateOres(event);
+        ExampleFlowerGeneration.generateFlowers(event);
         ExampleTreeGeneration.generateTrees(event);
     }
 }

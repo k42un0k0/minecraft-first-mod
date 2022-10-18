@@ -7,6 +7,8 @@ import com.example.examplemod.block.custom.trees.RedwoodTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -85,15 +87,15 @@ public class ExampleBlocks {
     public static final RegistryObject<Block> REDWOOD_PLANKS = registerBlock("redwood_planks",
             () ->  new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_PLANKS)));
 
-
-
     public static final RegistryObject<Block> REDWOOD_LEAVES = registerBlock("redwood_leaves",
-            () -> new LeavesBlock(AbstractBlock.Properties.of(Material.LEAVES).strength(0.2f)
-                .randomTicks().sound(SoundType.GRASS).noOcclusion()));
+            () -> new LeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES)));
 
     public static final RegistryObject<Block> REDWOOD_SAPLING = registerBlock("redwood_sapling",
             () -> new SaplingBlock(new RedwoodTree(), AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
-            
+
+    public static final RegistryObject<Block> HYACINTH = registerBlock("hyacinth",
+            () -> new FlowerBlock(Effects.HUNGER,20, AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
+
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> sup){
         return BLOCKS.register(name, sup);
     }
