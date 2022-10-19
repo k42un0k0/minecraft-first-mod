@@ -2,17 +2,20 @@ package com.example.examplemod;
 
 import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.codegen.*;
+import com.example.examplemod.container.ExampleContainers;
 import com.example.examplemod.entity.ExampleEntityTypes;
 import com.example.examplemod.entity.render.BuffZombieRenderer;
 import com.example.examplemod.entity.render.PigeonRenderer;
 import com.example.examplemod.item.ExampleItems;
+import com.example.examplemod.screen.LightningChannelerScreen;
+import com.example.examplemod.tileentity.ExampleTileEntities;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.AxeItem;
@@ -54,7 +57,9 @@ public class ExampleMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ExampleItems.register(modEventBus);
         ExampleBlocks.register(modEventBus);
+        ExampleTileEntities.register(modEventBus);
         ExampleEntityTypes.register(modEventBus);
+        ExampleContainers.register(modEventBus);
         modEventBus.addListener(this::registerProviders);
     }
 
@@ -81,6 +86,8 @@ public class ExampleMod {
         RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_LEAVES.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_SAPLING.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ExampleBlocks.HYACINTH.get(), RenderType.cutout());
+        ScreenManager.register(ExampleContainers.LIGHTNING_CHANNELER_CONTAINER.get(),
+                LightningChannelerScreen::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

@@ -49,6 +49,7 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
         commands(genKey("hunger","success"),"set %s 's food level to %d");
         tooltip(genKey(ExampleMod.MOD_ID,"firestone"),"Hold \u00A7eSHIFT\u00A7r for more Information!");
         tooltip(genKey(ExampleMod.MOD_ID,"firestone_shift"),"Might set you on fire. But also might protect from it!");
+        screen(genKey(ExampleMod.MOD_ID,"lightning_channeler"),"Lightning Channeler");
     }
 
     private static String genKey(String ... keys) {
@@ -59,5 +60,8 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
     }
     private void tooltip(String key, String text) {
         add(genKey("tooltip",key),text);
+    }
+    private void screen(String key, String text) {
+        add(genKey("screen",key),text);
     }
 }

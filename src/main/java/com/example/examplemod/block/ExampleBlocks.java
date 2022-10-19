@@ -2,12 +2,12 @@ package com.example.examplemod.block;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.block.custom.FirestoneBlock;
+import com.example.examplemod.block.custom.LightningChannelerBlock;
 import com.example.examplemod.block.custom.OatsBlock;
 import com.example.examplemod.block.custom.trees.RedwoodTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -95,6 +95,10 @@ public class ExampleBlocks {
 
     public static final RegistryObject<Block> HYACINTH = registerBlock("hyacinth",
             () -> new FlowerBlock(Effects.HUNGER,20, AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
+
+
+    public static final RegistryObject<Block> LIGHTNING_CHANNELER = registerBlock("lightning_channeler",
+            () -> new LightningChannelerBlock(AbstractBlock.Properties.of(Material.METAL)));
 
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> sup){
         return BLOCKS.register(name, sup);

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "examplemod:iron_ore_to_ingots_firestone"
+    ]
+  },
+  "criteria": {
+    "has_firestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "examplemod:firestone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "examplemod:iron_ore_to_ingots_firestone"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_firestone",
+      "has_the_recipe"
+    ]
+  ]
+}

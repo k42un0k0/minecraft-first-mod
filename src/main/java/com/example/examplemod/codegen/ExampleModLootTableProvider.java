@@ -92,6 +92,7 @@ public class ExampleModLootTableProvider extends LootTableProvider {
             dropSelf(ExampleBlocks.REDWOOD_SAPLING.get());
             dropSelf(ExampleBlocks.REDWOOD_LEAVES.get());
             dropSelf(ExampleBlocks.HYACINTH.get());
+            dropSelf(ExampleBlocks.LIGHTNING_CHANNELER.get());
             add(ExampleBlocks.REDWOOD_LEAVES.get(), (block) -> createLeavesDrops(block, ExampleBlocks.REDWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         }
     }

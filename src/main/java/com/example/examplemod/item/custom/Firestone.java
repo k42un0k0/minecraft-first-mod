@@ -4,18 +4,19 @@ import com.example.examplemod.ExampleMod;
 import com.example.examplemod.util.ExampleTags;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.FlintAndSteelItem;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -33,6 +34,7 @@ public class Firestone extends Item {
     public ActionResultType useOn(ItemUseContext context) {
         World world = context.getLevel();
         if (!world.isClientSide()) {
+            ExampleMod.LOGGER.info("USE ON");
             PlayerEntity player = context.getPlayer();
             BlockState clickedBlock = world.getBlockState((context.getClickedPos()));
             rightClickOnCertainBlockState(clickedBlock, context, player);
@@ -89,5 +91,20 @@ public class Firestone extends Item {
             BlockState blockstate = AbstractFireBlock.getState(world, blockpos);
             world.setBlock(blockpos, blockstate, 11);
         }
+    }
+
+    @Override
+    public ItemStack getContainerItem(ItemStack itemStack) {
+        ItemStack container = itemStack.copy();
+        if(container.hurt(1,random,null)){
+            return ItemStack.EMPTY;
+        }else{
+            return container;
+        }
+    }
+
+    @Override
+    public boolean hasContainerItem(ItemStack stack) {
+        return true;
     }
 }

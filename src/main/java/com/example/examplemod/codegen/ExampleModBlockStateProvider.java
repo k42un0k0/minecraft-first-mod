@@ -37,6 +37,8 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         cross(ExampleBlocks.REDWOOD_SAPLING.get());
         cross(ExampleBlocks.HYACINTH.get());
         leaves(ExampleBlocks.REDWOOD_LEAVES.get());
+        simpleBlockWithItem(ExampleBlocks.LIGHTNING_CHANNELER.get());
+
     }
 
     private void stairs(StairsBlock block, Block textureBlock) {
