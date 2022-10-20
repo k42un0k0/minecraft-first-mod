@@ -9,6 +9,7 @@ import com.example.examplemod.entity.render.PigeonRenderer;
 import com.example.examplemod.item.ExampleItems;
 import com.example.examplemod.screen.LightningChannelerScreen;
 import com.example.examplemod.tileentity.ExampleTileEntities;
+import com.example.examplemod.world.structure.ExampleStructures;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -60,6 +61,7 @@ public class ExampleMod {
         ExampleTileEntities.register(modEventBus);
         ExampleEntityTypes.register(modEventBus);
         ExampleContainers.register(modEventBus);
+        ExampleStructures.register(modEventBus);
         modEventBus.addListener(this::registerProviders);
     }
 
@@ -71,6 +73,7 @@ public class ExampleMod {
             AxeItem.STRIPABLES = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.STRIPABLES)
                     .put(ExampleBlocks.REDWOOD_LOG.get(), ExampleBlocks.STRIPPED_REDWOOD_LOG.get())
                     .put(ExampleBlocks.REDWOOD_WOOD.get(), ExampleBlocks.STRIPPED_REDWOOD_WOOD.get()).build();
+            ExampleStructures.setupStructures();
         });
     }
 
