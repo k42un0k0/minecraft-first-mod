@@ -9,6 +9,8 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import java.util.function.Supplier;
+
 import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
 
 public class ExampleModBlockStateProvider extends BlockStateProvider {
@@ -21,7 +23,15 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ExampleBlocks.TITANIUM_BLOCK.get());
         simpleBlockWithItem(ExampleBlocks.AMETHYST_BLOCK.get());
         simpleBlockWithItem(ExampleBlocks.AMETHYST_ORE.get());
-        simpleBlockWithItem(ExampleBlocks.FIRESTONE_BLOCK.get());
+        Runnable firestoneBlock = () -> {
+            Block block = ExampleBlocks.FIRESTONE_BLOCK.get();
+            ModelFile model = models().withExistingParent(name(block), BLOCK_FOLDER + "/cube_all")
+                    .texture("all", blockTexture(block))
+                    .texture("particle", mcLoc(BLOCK_FOLDER + "/obsidian"));
+            simpleBlock(block, model);
+            simpleBlockItem(block, model);
+        };
+        firestoneBlock.run();
         stairs((StairsBlock) ExampleBlocks.AMETHYST_STAIRS.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         wall((WallBlock) ExampleBlocks.AMETHYST_WALL.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         door((DoorBlock) ExampleBlocks.AMETHYST_DOOR.get());
@@ -29,11 +39,14 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         slab((SlabBlock) ExampleBlocks.AMETHYST_SLAB.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         pane((PaneBlock) ExampleBlocks.AMETHYST_PANE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
         button((AbstractButtonBlock) ExampleBlocks.AMETHYST_BUTTON.get(), ExampleBlocks.AMETHYST_BLOCK.get());
-        pressurePlate((PressurePlateBlock) ExampleBlocks.AMETHYST_PRESSURE_PLATE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
+        pressurePlate((PressurePlateBlock) ExampleBlocks.AMETHYST_PRESSURE_PLATE.get(),
+                ExampleBlocks.AMETHYST_BLOCK.get());
         crop((CropsBlock) ExampleBlocks.OATS.get());
         simpleBlockWithItem(ExampleBlocks.REDWOOD_PLANKS.get());
-        logAndWood((RotatedPillarBlock) ExampleBlocks.REDWOOD_LOG.get(), (RotatedPillarBlock) ExampleBlocks.REDWOOD_WOOD.get());
-        logAndWood((RotatedPillarBlock) ExampleBlocks.STRIPPED_REDWOOD_LOG.get(), (RotatedPillarBlock) ExampleBlocks.STRIPPED_REDWOOD_WOOD.get());
+        logAndWood((RotatedPillarBlock) ExampleBlocks.REDWOOD_LOG.get(),
+                (RotatedPillarBlock) ExampleBlocks.REDWOOD_WOOD.get());
+        logAndWood((RotatedPillarBlock) ExampleBlocks.STRIPPED_REDWOOD_LOG.get(),
+                (RotatedPillarBlock) ExampleBlocks.STRIPPED_REDWOOD_WOOD.get());
         cross(ExampleBlocks.REDWOOD_SAPLING.get());
         cross(ExampleBlocks.HYACINTH.get());
         leaves(ExampleBlocks.REDWOOD_LEAVES.get());
@@ -55,7 +68,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
 
     private void door(DoorBlock block) {
         //MEMO: doorのitem modelはitem側で生成
-        doorBlock(block, extend(blockTexture(block),"_bottom"), extend(blockTexture(block),"_top"));
+        doorBlock(block, extend(blockTexture(block), "_bottom"), extend(blockTexture(block), "_top"));
     }
 
     private String name(Block block) {
@@ -80,10 +93,12 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
     }
 
     private void button(AbstractButtonBlock block, Block textureBlock) {
-        ModelFile inventory = models().singleTexture(extend(blockTexture(block), "_inventory").toString(), mcLoc("block/button_inventory"), blockTexture(textureBlock));
+        ModelFile inventory = models().singleTexture(extend(blockTexture(block), "_inventory").toString(), mcLoc(
+                "block/button_inventory"), blockTexture(textureBlock));
         simpleBlockItem(block, inventory);
 
-        ModelFile pressed = models().singleTexture(extend(blockTexture(block), "_pressed").toString(), mcLoc("block/button_pressed"), blockTexture(textureBlock));
+        ModelFile pressed = models().singleTexture(extend(blockTexture(block), "_pressed").toString(), mcLoc("block" +
+                "/button_pressed"), blockTexture(textureBlock));
         ModelFile button = models().singleTexture(name(block), mcLoc("block/button"), blockTexture(textureBlock));
         getVariantBuilder(block).forAllStates(state -> {
             int yRot = ((int) state.getValue(AbstractButtonBlock.FACING).toYRot() + 180) % 360;
@@ -112,10 +127,12 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
     }
 
     private void pressurePlate(PressurePlateBlock block, Block textureBlock) {
-        ModelFile plate = models().singleTexture(name(block), mcLoc("block/pressure_plate_up"), blockTexture(textureBlock));
+        ModelFile plate = models().singleTexture(name(block), mcLoc("block/pressure_plate_up"),
+                blockTexture(textureBlock));
         simpleBlockItem(block, plate);
 
-        ModelFile down = models().singleTexture(extend(blockTexture(block), "_down").toString(), mcLoc("block/pressure_plate_down"), blockTexture(textureBlock));
+        ModelFile down = models().singleTexture(extend(blockTexture(block), "_down").toString(), mcLoc("block" +
+                "/pressure_plate_down"), blockTexture(textureBlock));
         getVariantBuilder(block)
                 .partialState().with(PressurePlateBlock.POWERED, true)
                 .modelForState().modelFile(down).addModel()
@@ -125,7 +142,8 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
 
     private void trapdoor(TrapDoorBlock block) {
         trapdoorBlock(block, blockTexture(block), true);
-        ResourceLocation location = new ResourceLocation(block.getRegistryName().getNamespace(), block.getRegistryName().getPath() + "_bottom");
+        ResourceLocation location = new ResourceLocation(block.getRegistryName().getNamespace(),
+                block.getRegistryName().getPath() + "_bottom");
         ModelFile bottom = models().getExistingFile(location);
         simpleBlockItem(block, bottom);
     }
@@ -155,15 +173,16 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(wood, strippedModel);
     }
 
-    private void cross(Block block){
-        ModelFile model = models().cross(name(block),blockTexture(block));
-        simpleBlock(block,model);
-        itemModels().withExistingParent(name(block),"generated").texture("layer0",blockTexture(block));
+    private void cross(Block block) {
+        ModelFile model = models().cross(name(block), blockTexture(block));
+        simpleBlock(block, model);
+        itemModels().withExistingParent(name(block), "generated").texture("layer0", blockTexture(block));
     }
 
-    private void leaves(Block block){
-        ModelFile model = models().withExistingParent(name(block),BLOCK_FOLDER+"/leaves").texture("all",blockTexture(block));
-        simpleBlock(block,model);
-        simpleBlockItem(block,model);
+    private void leaves(Block block) {
+        ModelFile model = models().withExistingParent(name(block), BLOCK_FOLDER + "/leaves").texture("all",
+                blockTexture(block));
+        simpleBlock(block, model);
+        simpleBlockItem(block, model);
     }
 }

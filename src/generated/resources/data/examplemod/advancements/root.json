@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "examplemod:amethyst_ore"
+    },
+    "title": {
+      "text": "nice found!!"
+    },
+    "description": {
+      "text": "found amethyst ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/end.png"
+  },
+  "criteria": {
+    "found_amethyst_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "examplemod:amethyst_ore"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "found_amethyst_ore"
+    ]
+  ]
+}

@@ -116,7 +116,8 @@ public class ExampleMod {
         LOGGER.info("HELLO from server starting");
     }
 
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
+    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing
+    // to the MOD
     // Event bus for receiving Registry Events)
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
@@ -136,11 +137,14 @@ public class ExampleMod {
             gen.addProvider(new ExampleModJaJpLanguageProvider(gen, MOD_ID));
         }
         if (event.includeServer()) {
+            gen.addProvider(new ExampleModAdvancementProvider(gen, event.getExistingFileHelper()));
             gen.addProvider(new ExampleModRecipeProvider(gen));
             gen.addProvider(new ExampleModLootTableProvider(gen));
-            BlockTagsProvider blockTagsProvider = new ExampleModBlockTagsProvider(gen, MOD_ID, event.getExistingFileHelper());
+            BlockTagsProvider blockTagsProvider = new ExampleModBlockTagsProvider(gen, MOD_ID,
+                    event.getExistingFileHelper());
             gen.addProvider(blockTagsProvider);
-            gen.addProvider(new ExampleModItemTagsProvider(gen, blockTagsProvider, MOD_ID, event.getExistingFileHelper()));
+            gen.addProvider(new ExampleModItemTagsProvider(gen, blockTagsProvider, MOD_ID,
+                    event.getExistingFileHelper()));
 
         }
     }
