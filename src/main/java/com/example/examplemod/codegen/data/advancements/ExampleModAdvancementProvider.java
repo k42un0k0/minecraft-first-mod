@@ -1,4 +1,4 @@
-package com.example.examplemod.codegen;
+package com.example.examplemod.codegen.data.advancements;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.advancements.Advancement;

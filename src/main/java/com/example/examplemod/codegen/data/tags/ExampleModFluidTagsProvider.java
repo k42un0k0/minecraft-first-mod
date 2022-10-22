@@ -1,4 +1,4 @@
-package com.example.examplemod.codegen;
+package com.example.examplemod.codegen.data.tags;
 
 import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.fluid.ExampleFluids;

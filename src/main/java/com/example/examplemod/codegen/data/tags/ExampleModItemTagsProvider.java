@@ -1,4 +1,4 @@
-package com.example.examplemod.codegen;
+package com.example.examplemod.codegen.data.tags;
 
 import com.example.examplemod.item.ExampleItems;
 import com.example.examplemod.util.ExampleTags;

@@ -1,4 +1,4 @@
-package com.example.examplemod.codegen;
+package com.example.examplemod.codegen.data;
 
 
 import com.example.examplemod.block.ExampleBlocks;

@@ -1,12 +1,15 @@
-package com.example.examplemod.codegen;
+package com.example.examplemod.codegen.data;
 
 import com.example.examplemod.ExampleMod;
+import com.example.examplemod.data.recipes.ExampleRecipeTypes;
+import com.example.examplemod.data.recipes.LightningChannelerRecipe;
 import com.example.examplemod.item.ExampleItems;
 import com.example.examplemod.util.ExampleTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.item.crafting.CookingRecipeSerializer;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -44,6 +47,9 @@ public class ExampleModRecipeProvider extends RecipeProvider {
                 .requires(ExampleItems.FIRESTONE.get())
                 .unlockedBy(getUnlockCriteriaName(ExampleItems.FIRESTONE.get()), has(ExampleItems.FIRESTONE.get()))
                 .save(consumer, modName("iron_ore_to_ingots_firestone"));
+        LightningRecipeBuilder.clear(ExampleItems.AMETHYST_HOE.get()).slot0(amethyst).slot1(Items.STICK).save(consumer);
+        LightningRecipeBuilder.thundering(ExampleItems.FIRESTONE.get()).slot0(Items.GLASS_PANE).slot1(amethyst).save(consumer);
+
     }
 
     private String getUnlockCriteriaName(Item item) {

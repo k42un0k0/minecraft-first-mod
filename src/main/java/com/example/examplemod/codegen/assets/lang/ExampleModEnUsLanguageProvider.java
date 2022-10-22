@@ -1,4 +1,4 @@
-package com.example.examplemod.codegen;
+package com.example.examplemod.codegen.assets.lang;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.fluid.ExampleFluids;

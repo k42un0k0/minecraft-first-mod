@@ -1,4 +1,4 @@
-package com.example.examplemod.codegen;
+package com.example.examplemod.codegen.assets;
 
 import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.item.ExampleItems;

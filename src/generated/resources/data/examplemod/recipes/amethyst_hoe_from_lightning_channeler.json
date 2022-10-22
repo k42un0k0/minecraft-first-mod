@@ -1,0 +1,15 @@
+{
+  "type": "examplemod:lightning",
+  "ingredients": [
+    {
+      "item": "examplemod:amethyst"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "output": {
+    "item": "examplemod:amethyst_hoe"
+  },
+  "weather": "clear"
+}

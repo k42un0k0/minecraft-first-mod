@@ -2,8 +2,18 @@ package com.example.examplemod;
 
 import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.block.ExampleWoodType;
-import com.example.examplemod.codegen.*;
+import com.example.examplemod.codegen.assets.ExampleModBlockStateProvider;
+import com.example.examplemod.codegen.assets.ExampleModItemModelProvider;
+import com.example.examplemod.codegen.assets.lang.ExampleModEnUsLanguageProvider;
+import com.example.examplemod.codegen.assets.lang.ExampleModJaJpLanguageProvider;
+import com.example.examplemod.codegen.data.ExampleModLootTableProvider;
+import com.example.examplemod.codegen.data.ExampleModRecipeProvider;
+import com.example.examplemod.codegen.data.advancements.ExampleModAdvancementProvider;
+import com.example.examplemod.codegen.data.tags.ExampleModBlockTagsProvider;
+import com.example.examplemod.codegen.data.tags.ExampleModFluidTagsProvider;
+import com.example.examplemod.codegen.data.tags.ExampleModItemTagsProvider;
 import com.example.examplemod.container.ExampleContainers;
+import com.example.examplemod.data.recipes.ExampleRecipeTypes;
 import com.example.examplemod.entity.ExampleEntityTypes;
 import com.example.examplemod.entity.render.BuffZombieRenderer;
 import com.example.examplemod.entity.render.PigeonRenderer;
@@ -69,6 +79,7 @@ public class ExampleMod {
         ExampleContainers.register(modEventBus);
         ExampleStructures.register(modEventBus);
         ExampleFluids.register(modEventBus);
+        ExampleRecipeTypes.register(modEventBus);
         modEventBus.addListener(this::registerProviders);
     }
 

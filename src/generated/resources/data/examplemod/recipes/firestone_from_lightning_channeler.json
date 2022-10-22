@@ -1,0 +1,15 @@
+{
+  "type": "examplemod:lightning",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_pane"
+    },
+    {
+      "item": "examplemod:amethyst"
+    }
+  ],
+  "output": {
+    "item": "examplemod:firestone"
+  },
+  "weather": "thundering"
+}
