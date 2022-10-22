@@ -17,6 +17,13 @@ public class ExampleTileEntities {
                     () -> TileEntityType.Builder.of(LightningChannelerTile::new,
                             ExampleBlocks.LIGHTNING_CHANNELER.get()).build(null));
 
+    public static final RegistryObject<TileEntityType<ExampleSignTileEntity>> SIGN_TILE_ENTITIES =
+            TILE_ENTITIES.register("sign",
+                    () -> TileEntityType.Builder.of(ExampleSignTileEntity::new,
+                            ExampleBlocks.REDWOOD_SIGN.get(),
+                            ExampleBlocks.REDWOOD_WALL_SIGN.get()
+                    ).build(null));
+
     public static void register(IEventBus eventBus) {
         TILE_ENTITIES.register(eventBus);
     }

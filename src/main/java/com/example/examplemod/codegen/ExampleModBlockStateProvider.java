@@ -51,6 +51,7 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         cross(ExampleBlocks.HYACINTH.get());
         leaves(ExampleBlocks.REDWOOD_LEAVES.get());
         simpleBlockWithItem(ExampleBlocks.LIGHTNING_CHANNELER.get());
+        sign(ExampleBlocks.REDWOOD_SIGN.get(),ExampleBlocks.REDWOOD_WALL_SIGN.get(), ExampleBlocks.REDWOOD_PLANKS.get());
 
     }
 
@@ -58,6 +59,18 @@ public class ExampleModBlockStateProvider extends BlockStateProvider {
         stairsBlock(block, blockTexture(textureBlock));
         ModelFile model = models().getExistingFile(block.getRegistryName());
         simpleBlockItem(block, model);
+    }
+
+    private void sign(Block standing,Block wall, Block textureBlock) {
+        ModelFile model = models().getBuilder(standing.getRegistryName().getPath()).texture("particle",
+                blockTexture(textureBlock));
+        simpleBlock(standing, model);
+        ModelFile wallModel = models().getBuilder(wall.getRegistryName().getPath()).texture("particle",
+                blockTexture(textureBlock));
+        simpleBlock(wall, wallModel);
+        itemModels().withExistingParent(name(standing), "generated").texture("layer0",
+                modLoc("item/" + standing.getRegistryName().getPath()));
+
     }
 
     private void wall(WallBlock block, Block textureBlock) {

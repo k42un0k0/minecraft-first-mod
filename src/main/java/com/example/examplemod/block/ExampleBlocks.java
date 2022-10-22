@@ -1,9 +1,7 @@
 package com.example.examplemod.block;
 
 import com.example.examplemod.ExampleMod;
-import com.example.examplemod.block.custom.FirestoneBlock;
-import com.example.examplemod.block.custom.LightningChannelerBlock;
-import com.example.examplemod.block.custom.OatsBlock;
+import com.example.examplemod.block.custom.*;
 import com.example.examplemod.block.custom.trees.RedwoodTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -20,24 +18,27 @@ import java.util.function.Supplier;
 
 
 public class ExampleBlocks {
-    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ExampleMod.MOD_ID);
-    public static final RegistryObject<Block> TITANIUM_BLOCK = registerBlock("titanium_block", () -> new Block(AbstractBlock.Properties
-            .of(Material.METAL, MaterialColor.METAL)
-            .requiresCorrectToolForDrops()
-            .strength(5.0F, 6.0F)
-            .sound(SoundType.METAL)
-            .harvestTool(ToolType.PICKAXE)
-            .harvestLevel(1)
-    ));
+    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+            ExampleMod.MOD_ID);
+    public static final RegistryObject<Block> TITANIUM_BLOCK = registerBlock("titanium_block",
+            () -> new Block(AbstractBlock.Properties
+                    .of(Material.METAL, MaterialColor.METAL)
+                    .requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F)
+                    .sound(SoundType.METAL)
+                    .harvestTool(ToolType.PICKAXE)
+                    .harvestLevel(1)
+            ));
 
-    public static final RegistryObject<Block> AMETHYST_BLOCK = registerBlock("amethyst_block", () -> new Block(AbstractBlock.Properties
-            .of(Material.STONE, MaterialColor.COLOR_PURPLE)
-            .requiresCorrectToolForDrops()
-            .strength(5.0F, 6.0F)
-            .sound(SoundType.METAL)
-            .harvestTool(ToolType.PICKAXE)
-            .harvestLevel(1)
-    ));
+    public static final RegistryObject<Block> AMETHYST_BLOCK = registerBlock("amethyst_block",
+            () -> new Block(AbstractBlock.Properties
+                    .of(Material.STONE, MaterialColor.COLOR_PURPLE)
+                    .requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F)
+                    .sound(SoundType.METAL)
+                    .harvestTool(ToolType.PICKAXE)
+                    .harvestLevel(1)
+            ));
 
     public static final RegistryObject<Block> AMETHYST_ORE = registerBlock("amethyst_ore",
             () -> new Block(AbstractBlock.Properties.of(Material.STONE)
@@ -48,7 +49,7 @@ public class ExampleBlocks {
                     .harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
 
     public static final RegistryObject<Block> AMETHYST_STAIRS = registerBlock("amethyst_stairs",
-            () -> new StairsBlock(()-> AMETHYST_BLOCK.get().defaultBlockState(),
+            () -> new StairsBlock(() -> AMETHYST_BLOCK.get().defaultBlockState(),
                     AbstractBlock.Properties.copy(AMETHYST_BLOCK.get())));
 
     public static final RegistryObject<Block> AMETHYST_WALL = registerBlock("amethyst_wall",
@@ -67,25 +68,26 @@ public class ExampleBlocks {
             () -> new SlabBlock(AbstractBlock.Properties.copy(AMETHYST_BLOCK.get())));
 
     public static final RegistryObject<Block> AMETHYST_BUTTON = registerBlock("amethyst_button",
-            () ->  new WoodButtonBlock(AbstractBlock.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)));
+            () -> new WoodButtonBlock(AbstractBlock.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)));
 
     public static final RegistryObject<Block> AMETHYST_PRESSURE_PLATE = registerBlock("amethyst_pressure_plate",
-            () ->  new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)));
+            () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,
+                    AbstractBlock.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)));
 
     public static final RegistryObject<Block> OATS = registerBlock("oats_crop",
-            () ->  new OatsBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+            () -> new OatsBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
 
 
     public static final RegistryObject<Block> REDWOOD_LOG = registerBlock("redwood_log",
-            () ->  new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_LOG)));
+            () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<Block> REDWOOD_WOOD = registerBlock("redwood_wood",
-            () ->  new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_WOOD)));
+            () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_WOOD)));
     public static final RegistryObject<Block> STRIPPED_REDWOOD_LOG = registerBlock("stripped_redwood_log",
-            () ->  new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
+            () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
     public static final RegistryObject<Block> STRIPPED_REDWOOD_WOOD = registerBlock("stripped_redwood_wood",
-            () ->  new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
+            () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
     public static final RegistryObject<Block> REDWOOD_PLANKS = registerBlock("redwood_planks",
-            () ->  new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_PLANKS)));
+            () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_PLANKS)));
 
     public static final RegistryObject<Block> REDWOOD_LEAVES = registerBlock("redwood_leaves",
             () -> new LeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES)));
@@ -94,19 +96,25 @@ public class ExampleBlocks {
             () -> new SaplingBlock(new RedwoodTree(), AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
 
     public static final RegistryObject<Block> HYACINTH = registerBlock("hyacinth",
-            () -> new FlowerBlock(Effects.HUNGER,20, AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
-
+            () -> new FlowerBlock(Effects.HUNGER, 20, AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
 
     public static final RegistryObject<Block> LIGHTNING_CHANNELER = registerBlock("lightning_channeler",
             () -> new LightningChannelerBlock(AbstractBlock.Properties.of(Material.METAL)));
 
-    private static RegistryObject<Block> registerBlock(String name, Supplier<Block> sup){
+    public static final RegistryObject<Block> REDWOOD_SIGN = registerBlock("redwood_sign",
+            () -> new ExampleStandingSignBlock(AbstractBlock.Properties.of(Material.METAL), ExampleWoodType.REDWOOD));
+
+    public static final RegistryObject<Block> REDWOOD_WALL_SIGN = registerBlock("redwood_wall_sign",
+            () -> new ExampleWallSignBlock(AbstractBlock.Properties.of(Material.METAL), ExampleWoodType.REDWOOD));
+
+    private static RegistryObject<Block> registerBlock(String name, Supplier<Block> sup) {
         return BLOCKS.register(name, sup);
     }
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }
+
     public static Collection<RegistryObject<Block>> getEntries() {
         return BLOCKS.getEntries();
     }

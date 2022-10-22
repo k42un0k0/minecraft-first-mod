@@ -45,23 +45,27 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
         add(ExampleItems.STRIPPED_REDWOOD_WOOD.get(), "Stripped Redwood Wood");
         add(ExampleItems.REDWOOD_SAPLING.get(), "Redwood Sapling");
         add(ExampleItems.REDWOOD_LEAVES.get(), "Redwood Leaves");
-        add(genKey("itemGroup",ExampleMod.MOD_ID), "Example Mod");
-        commands(genKey("hunger","success"),"set %s 's food level to %d");
-        tooltip(genKey(ExampleMod.MOD_ID,"firestone"),"Hold \u00A7eSHIFT\u00A7r for more Information!");
-        tooltip(genKey(ExampleMod.MOD_ID,"firestone_shift"),"Might set you on fire. But also might protect from it!");
-        screen(genKey(ExampleMod.MOD_ID,"lightning_channeler"),"Lightning Channeler");
+        add(ExampleItems.REDWOOD_SIGN.get(), "Redwood Sign");
+        add(genKey("itemGroup", ExampleMod.MOD_ID), "Example Mod");
+        commands(genKey("hunger", "success"), "set %s 's food level to %d");
+        tooltip(genKey(ExampleMod.MOD_ID, "firestone"), "Hold \u00A7eSHIFT\u00A7r for more Information!");
+        tooltip(genKey(ExampleMod.MOD_ID, "firestone_shift"), "Might set you on fire. But also might protect from it!");
+        screen(genKey(ExampleMod.MOD_ID, "lightning_channeler"), "Lightning Channeler");
     }
 
-    private static String genKey(String ... keys) {
+    private static String genKey(String... keys) {
         return String.join(".", keys);
     }
+
     private void commands(String key, String text) {
-        add(genKey("commands",key),text);
+        add(genKey("commands", key), text);
     }
+
     private void tooltip(String key, String text) {
-        add(genKey("tooltip",key),text);
+        add(genKey("tooltip", key), text);
     }
+
     private void screen(String key, String text) {
-        add(genKey("screen",key),text);
+        add(genKey("screen", key), text);
     }
 }

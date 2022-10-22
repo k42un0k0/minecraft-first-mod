@@ -19,7 +19,7 @@ public class ExampleItems {
         return new Item.Properties().tab(ExampleItemGroup.TAB);
     }
 
-    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
             ExampleMod.MOD_ID);
 
     public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
@@ -103,6 +103,10 @@ public class ExampleItems {
 
     public static final RegistryObject<Item> AMETHYST_HORSE_ARMOR = registerItem("amethyst_horse_armor",
             () -> new HorseArmorItem(9, "amethyst", defaultProperties()));
+
+    public static final RegistryObject<Item> REDWOOD_SIGN = registerItem("redwood_sign",
+            () -> new SignItem(defaultProperties().stacksTo(16), ExampleBlocks.REDWOOD_SIGN.get(),
+                    ExampleBlocks.REDWOOD_WALL_SIGN.get()));
 
     private static RegistryObject<Item> registerBlockItem(String name, RegistryObject<Block> blockRegistryObject) {
         return registerItem(name, () ->

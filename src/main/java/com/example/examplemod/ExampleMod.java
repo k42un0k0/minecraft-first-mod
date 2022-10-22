@@ -1,6 +1,7 @@
 package com.example.examplemod;
 
 import com.example.examplemod.block.ExampleBlocks;
+import com.example.examplemod.block.ExampleWoodType;
 import com.example.examplemod.codegen.*;
 import com.example.examplemod.container.ExampleContainers;
 import com.example.examplemod.entity.ExampleEntityTypes;
@@ -12,11 +13,14 @@ import com.example.examplemod.tileentity.ExampleTileEntities;
 import com.example.examplemod.world.structure.ExampleStructures;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
+import net.minecraft.block.WoodType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.renderer.Atlases;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.AxeItem;
@@ -25,6 +29,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.*;
@@ -74,23 +79,30 @@ public class ExampleMod {
                     .put(ExampleBlocks.REDWOOD_LOG.get(), ExampleBlocks.STRIPPED_REDWOOD_LOG.get())
                     .put(ExampleBlocks.REDWOOD_WOOD.get(), ExampleBlocks.STRIPPED_REDWOOD_WOOD.get()).build();
             ExampleStructures.setupStructures();
+
+            WoodType.register(ExampleWoodType.REDWOOD);
         });
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
-        ClientPlayerEntity player = Minecraft.getInstance().player;
-        RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(), BuffZombieRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.PIGEON.get(), PigeonRenderer::new);
-        RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_DOOR.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_TRAPDOOR.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ExampleBlocks.OATS.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_LEAVES.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_SAPLING.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ExampleBlocks.HYACINTH.get(), RenderType.cutout());
-        ScreenManager.register(ExampleContainers.LIGHTNING_CHANNELER_CONTAINER.get(),
-                LightningChannelerScreen::new);
+        event.enqueueWork(()->{
+            // do something that can only be done on the client
+            LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+            ClientPlayerEntity player = Minecraft.getInstance().player;
+            RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(), BuffZombieRenderer::new);
+            RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.PIGEON.get(), PigeonRenderer::new);
+            RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_DOOR.get(), RenderType.cutout());
+            RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_TRAPDOOR.get(), RenderType.cutout());
+            RenderTypeLookup.setRenderLayer(ExampleBlocks.OATS.get(), RenderType.cutout());
+            RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_LEAVES.get(), RenderType.cutout());
+            RenderTypeLookup.setRenderLayer(ExampleBlocks.REDWOOD_SAPLING.get(), RenderType.cutout());
+            RenderTypeLookup.setRenderLayer(ExampleBlocks.HYACINTH.get(), RenderType.cutout());
+            ScreenManager.register(ExampleContainers.LIGHTNING_CHANNELER_CONTAINER.get(),
+                    LightningChannelerScreen::new);
+            ClientRegistry.bindTileEntityRenderer(ExampleTileEntities.SIGN_TILE_ENTITIES.get(),
+                    SignTileEntityRenderer::new);
+            Atlases.addWoodType(ExampleWoodType.REDWOOD);
+        });
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
