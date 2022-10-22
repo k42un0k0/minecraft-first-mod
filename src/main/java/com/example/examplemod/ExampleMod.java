@@ -7,6 +7,7 @@ import com.example.examplemod.container.ExampleContainers;
 import com.example.examplemod.entity.ExampleEntityTypes;
 import com.example.examplemod.entity.render.BuffZombieRenderer;
 import com.example.examplemod.entity.render.PigeonRenderer;
+import com.example.examplemod.fluid.ExampleFluids;
 import com.example.examplemod.item.ExampleItems;
 import com.example.examplemod.screen.LightningChannelerScreen;
 import com.example.examplemod.tileentity.ExampleTileEntities;
@@ -67,6 +68,7 @@ public class ExampleMod {
         ExampleEntityTypes.register(modEventBus);
         ExampleContainers.register(modEventBus);
         ExampleStructures.register(modEventBus);
+        ExampleFluids.register(modEventBus);
         modEventBus.addListener(this::registerProviders);
     }
 
@@ -85,11 +87,12 @@ public class ExampleMod {
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        event.enqueueWork(()->{
+        event.enqueueWork(() -> {
             // do something that can only be done on the client
             LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
             ClientPlayerEntity player = Minecraft.getInstance().player;
-            RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(), BuffZombieRenderer::new);
+            RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(),
+                    BuffZombieRenderer::new);
             RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.PIGEON.get(), PigeonRenderer::new);
             RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_DOOR.get(), RenderType.cutout());
             RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_TRAPDOOR.get(), RenderType.cutout());
@@ -102,6 +105,10 @@ public class ExampleMod {
             ClientRegistry.bindTileEntityRenderer(ExampleTileEntities.SIGN_TILE_ENTITIES.get(),
                     SignTileEntityRenderer::new);
             Atlases.addWoodType(ExampleWoodType.REDWOOD);
+            RenderTypeLookup.setRenderLayer(ExampleFluids.OIL_FLUID.get(), RenderType.translucent());
+            RenderTypeLookup.setRenderLayer(ExampleFluids.OIL_BLOCK.get(), RenderType.translucent());
+            RenderTypeLookup.setRenderLayer(ExampleFluids.OIL_FLOWING.get(), RenderType.translucent());
+
         });
     }
 
@@ -156,6 +163,8 @@ public class ExampleMod {
                     event.getExistingFileHelper());
             gen.addProvider(blockTagsProvider);
             gen.addProvider(new ExampleModItemTagsProvider(gen, blockTagsProvider, MOD_ID,
+                    event.getExistingFileHelper()));
+            gen.addProvider(new ExampleModFluidTagsProvider(gen, MOD_ID,
                     event.getExistingFileHelper()));
 
         }

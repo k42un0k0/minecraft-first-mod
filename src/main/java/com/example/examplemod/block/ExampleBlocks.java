@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 
 
 public class ExampleBlocks {
-    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
             ExampleMod.MOD_ID);
     public static final RegistryObject<Block> TITANIUM_BLOCK = registerBlock("titanium_block",
             () -> new Block(AbstractBlock.Properties

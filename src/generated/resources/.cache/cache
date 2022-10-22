@@ -22,7 +22,7 @@ e7df18e496594f9d2f999c81a0796551dae2d8fa assets/examplemod/blockstates/redwood_s
 2e0a18a588b6eaa1178bde7c7de39bb65538932e assets/examplemod/blockstates/stripped_redwood_log.json
 7782277853aab3f7dd32422ceec3e4cba085751d assets/examplemod/blockstates/stripped_redwood_wood.json
 cfe6169aa03b851a04efaf5797824360acff699c assets/examplemod/blockstates/titanium_block.json
-bf42551c28a985bced3b816261d8036042d7a56e assets/examplemod/lang/en_us.json
+5ccc39291514ba4af0b5e96ad00d71506c502cf5 assets/examplemod/lang/en_us.json
 220ae503ab64fb0479619689563c2453f8a93672 assets/examplemod/lang/ja_jp.json
 dd3caa026566af91a24ff8cd69c8ecab28f9637a assets/examplemod/models/block/amethyst_block.json
 eedab8333db1f03e3565e171820b9537ef15caa2 assets/examplemod/models/block/amethyst_button.json
@@ -101,6 +101,7 @@ c0c9127e270b0da94dae869de30e45172d5b042b assets/examplemod/models/item/amethyst_
 ed3661b0cdb291fd347a5fd8a446166355b0dd8b assets/examplemod/models/item/hyacinth.json
 b9e147961dd6390f5d1265d287df80dcfe31db4e assets/examplemod/models/item/lightning_channeler.json
 b3cf453ec93d45e76f7398d701cbe2972f57a4b3 assets/examplemod/models/item/oats.json
+30dca785268400145308fb63dc105fe081c70cd1 assets/examplemod/models/item/oil_bucket.json
 cec9eb343dd0bb5a954c6c4ddab074e6e34eddbd assets/examplemod/models/item/redwood_leaves.json
 e4ed5ac6df2205a172ca51ddfc1e58c3ddc34312 assets/examplemod/models/item/redwood_log.json
 cae1543467587d3901b8c0fd9551f20c05a7121d assets/examplemod/models/item/redwood_planks.json
@@ -159,3 +160,4 @@ da73f6ba506dbc659d65d0a68659498516c9eaf9 data/forge/tags/items/gems/amethyst.jso
 053381f41d02d784ec5ad56c879d42033879d5c3 data/minecraft/tags/blocks/logs.json
 88c362948dca2cb76f3587b27706ea673e9497d3 data/minecraft/tags/blocks/planks.json
 f188ca085bc43da197de3c9c77f31034c3aaa91e data/minecraft/tags/blocks/walls.json
+8db01dd26b4dfc497ced86990ba6ce7639f2e2ee data/minecraft/tags/fluids/water.json

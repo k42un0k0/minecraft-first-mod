@@ -2,6 +2,7 @@ package com.example.examplemod.item;
 
 import com.example.examplemod.block.ExampleBlocks;
 import com.example.examplemod.ExampleMod;
+import com.example.examplemod.fluid.ExampleFluids;
 import com.example.examplemod.item.custom.Firestone;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -107,6 +108,10 @@ public class ExampleItems {
     public static final RegistryObject<Item> REDWOOD_SIGN = registerItem("redwood_sign",
             () -> new SignItem(defaultProperties().stacksTo(16), ExampleBlocks.REDWOOD_SIGN.get(),
                     ExampleBlocks.REDWOOD_WALL_SIGN.get()));
+
+    public static final RegistryObject<Item> OIL_BUCKET = ITEMS.register("oil_bucket",
+            () -> new BucketItem(() -> ExampleFluids.OIL_FLUID.get(),
+                   defaultProperties().stacksTo(8)));
 
     private static RegistryObject<Item> registerBlockItem(String name, RegistryObject<Block> blockRegistryObject) {
         return registerItem(name, () ->
