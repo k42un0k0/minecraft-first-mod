@@ -50,3 +50,5 @@ Forge Discord: https://discord.gg/UvedJ9m
 [動画参考](https://www.youtube.com/watch?v=6aOcWSldlYs&list=PLKGarocXCE1EMxeBvqsOWZVkYD_Vd_uwW&index=38)
 [MCP関係srg](https://mcpbot.unascribed.com/)
 [minecraft用のプラグイン](https://plugins.jetbrains.com/plugin/8327-minecraft-development)
+### 飛ばしたチャプター
+- [JEI INTEGRATION](https://www.youtube.com/watch?v=L7srFZgHuy8&list=PLKGarocXCE1EMxeBvqsOWZVkYD_Vd_uwW&index=35)
