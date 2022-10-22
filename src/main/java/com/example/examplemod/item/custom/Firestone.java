@@ -110,7 +110,7 @@ public class Firestone extends Item implements ICurioItem {
         World world = context.getLevel();
         BlockPos blockpos = context.getClickedPos().relative(context.getClickedFace());
         if (AbstractFireBlock.canBePlacedAt(world, blockpos, context.getHorizontalDirection())) {
-            world.playSound(playerentity, context.getClickedPos(), SoundEvents.FLINTANDSTEEL_USE,
+            world.playSound(null, context.getClickedPos(), SoundEvents.FLINTANDSTEEL_USE,
                     SoundCategory.BLOCKS, 1.0F, random.nextFloat() * 0.4F + 0.8F);
             BlockState blockstate = AbstractFireBlock.getState(world, blockpos);
             world.setBlock(blockpos, blockstate, 11);

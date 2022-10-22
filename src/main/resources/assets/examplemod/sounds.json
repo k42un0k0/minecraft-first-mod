@@ -1,0 +1,9 @@
+{
+  "small_explosion": {
+    "category": "blocks",
+    "subtitle": "examplemod.small_explosion",
+    "sounds": [
+      "examplemod:small_explosion"
+    ]
+  }
+}

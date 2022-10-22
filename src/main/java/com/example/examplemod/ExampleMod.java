@@ -21,6 +21,7 @@ import com.example.examplemod.fluid.ExampleFluids;
 import com.example.examplemod.item.ExampleItems;
 import com.example.examplemod.screen.LightningChannelerScreen;
 import com.example.examplemod.tileentity.ExampleTileEntities;
+import com.example.examplemod.util.ExampleSoundEvents;
 import com.example.examplemod.world.structure.ExampleStructures;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
@@ -82,6 +83,7 @@ public class ExampleMod {
         ExampleStructures.register(modEventBus);
         ExampleFluids.register(modEventBus);
         ExampleRecipeTypes.register(modEventBus);
+        ExampleSoundEvents.register(modEventBus);
         modEventBus.addListener(this::registerProviders);
     }
 
