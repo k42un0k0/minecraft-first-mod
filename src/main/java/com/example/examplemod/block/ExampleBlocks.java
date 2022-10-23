@@ -111,6 +111,11 @@ public class ExampleBlocks {
         return BLOCKS.register(name, sup);
     }
 
+
+    public static final RegistryObject<Block> KAUPEN_ALTAR = registerBlock("kaupen_altar",
+            () -> new KaupenAltarBlock(AbstractBlock.Properties.of(Material.METAL).noOcclusion()));
+
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

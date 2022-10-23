@@ -126,6 +126,9 @@ public class ExampleItems {
     public static final RegistryObject<Item> KAUPENBOW = ITEMS.register("kaupenbow",
             () -> new BowItem(defaultProperties().stacksTo(1)));
 
+    public static final RegistryObject<Item> KAUPEN_ALTAR = registerBlockItem("kaupen_altar",
+            ExampleBlocks.KAUPEN_ALTAR);
+
     private static RegistryObject<Item> registerBlockItem(String name, RegistryObject<Block> blockRegistryObject) {
         return registerItem(name, () ->
                 new BlockItem(blockRegistryObject.get(), defaultProperties()));

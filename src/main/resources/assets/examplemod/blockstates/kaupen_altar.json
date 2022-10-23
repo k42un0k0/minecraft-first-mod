@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "examplemod:block/kaupen_altar",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "examplemod:block/kaupen_altar"
+    },
+    "facing=south": {
+      "model": "examplemod:block/kaupen_altar",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "examplemod:block/kaupen_altar",
+      "y": 270
+    }
+  }
+}
