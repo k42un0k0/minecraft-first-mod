@@ -21,6 +21,7 @@ import com.example.examplemod.fluid.ExampleFluids;
 import com.example.examplemod.item.ExampleItems;
 import com.example.examplemod.screen.LightningChannelerScreen;
 import com.example.examplemod.tileentity.ExampleTileEntities;
+import com.example.examplemod.util.ExampleItemModelProperties;
 import com.example.examplemod.util.ExampleSoundEvents;
 import com.example.examplemod.world.biome.ExampleBiomes;
 import com.example.examplemod.world.gen.ExampleBiomeGeneration;
@@ -125,7 +126,7 @@ public class ExampleMod {
             RenderTypeLookup.setRenderLayer(ExampleFluids.OIL_FLUID.get(), RenderType.translucent());
             RenderTypeLookup.setRenderLayer(ExampleFluids.OIL_BLOCK.get(), RenderType.translucent());
             RenderTypeLookup.setRenderLayer(ExampleFluids.OIL_FLOWING.get(), RenderType.translucent());
-
+            ExampleItemModelProperties.makeBow(ExampleItems.KAUPENBOW.get());
         });
         RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(), BuffZombieRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.PIGEON.get(), PigeonRenderer::new);

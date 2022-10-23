@@ -49,6 +49,8 @@ public class ExampleModEnUsLanguageProvider extends LanguageProvider {
         add(ExampleItems.REDWOOD_SIGN.get(), "Redwood Sign");
         add(ExampleItems.OIL_BUCKET.get(), "Oil Bucket");
         add(ExampleFluids.OIL_BLOCK.get(), "Oil");
+        add(ExampleItems.KAUPENBOW.get(),"Kaupenbow");
+
         add(genKey("itemGroup", ExampleMod.MOD_ID), "Example Mod");
         commands(genKey("hunger", "success"), "set %s 's food level to %d");
         tooltip(genKey(ExampleMod.MOD_ID, "firestone"), "Hold \u00A7eSHIFT\u00A7r for more Information!");
