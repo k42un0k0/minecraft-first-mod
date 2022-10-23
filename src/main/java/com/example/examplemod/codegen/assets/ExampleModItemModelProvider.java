@@ -34,6 +34,8 @@ public class ExampleModItemModelProvider extends ItemModelProvider {
         simpleItem(ExampleItems.OATS.get());
         simpleItem(ExampleItems.AMETHYST_HORSE_ARMOR.get());
         simpleItem(ExampleItems.OIL_BUCKET.get());
+        withExistingParent(ExampleItems.BUFF_ZOMBIE_SPAWN_EGG.get().toString(),folder+"/template_spawn_egg");
+        withExistingParent(ExampleItems.PIGEON_SPAWN_EGG.get().toString(),folder+"/template_spawn_egg");
         pane(ExampleItems.AMETHYST_PANE.get(), ExampleBlocks.AMETHYST_BLOCK.get());
     }
 

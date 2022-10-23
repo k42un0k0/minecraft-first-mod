@@ -1,10 +1,7 @@
 package com.example.examplemod.world;
 
 import com.example.examplemod.ExampleMod;
-import com.example.examplemod.world.gen.ExampleFlowerGeneration;
-import com.example.examplemod.world.gen.ExampleOreGeneration;
-import com.example.examplemod.world.gen.ExampleStructureGeneration;
-import com.example.examplemod.world.gen.ExampleTreeGeneration;
+import com.example.examplemod.world.gen.*;
 import com.example.examplemod.world.structure.ExampleStructures;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.ResourceLocation;
@@ -36,18 +33,20 @@ public class ExampleWorldEvents {
         ExampleOreGeneration.generateOres(event);
         ExampleFlowerGeneration.generateFlowers(event);
         ExampleTreeGeneration.generateTrees(event);
+
+        ExampleEntityGeneration.onEntitySpawn(event);
     }
 
 
     @SubscribeEvent
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
-        if(event.getWorld() instanceof ServerWorld) {
+        if (event.getWorld() instanceof ServerWorld) {
             ServerWorld serverWorld = (ServerWorld) event.getWorld();
             try {
                 Method GETCODEC_METHOD =
                         ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "func_230347_a_");
                 ResourceLocation cgRL = Registry.CHUNK_GENERATOR.getKey(
-                        (Codec<? extends ChunkGenerator>)GETCODEC_METHOD.invoke(serverWorld.getChunkSource().generator));
+                        (Codec<? extends ChunkGenerator>) GETCODEC_METHOD.invoke(serverWorld.getChunkSource().generator));
 
                 if (cgRL != null && cgRL.getNamespace().equals("terraforged")) {
                     return;

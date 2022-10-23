@@ -22,6 +22,8 @@ import com.example.examplemod.item.ExampleItems;
 import com.example.examplemod.screen.LightningChannelerScreen;
 import com.example.examplemod.tileentity.ExampleTileEntities;
 import com.example.examplemod.util.ExampleSoundEvents;
+import com.example.examplemod.world.biome.ExampleBiomes;
+import com.example.examplemod.world.gen.ExampleBiomeGeneration;
 import com.example.examplemod.world.structure.ExampleStructures;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
@@ -84,6 +86,7 @@ public class ExampleMod {
         ExampleFluids.register(modEventBus);
         ExampleRecipeTypes.register(modEventBus);
         ExampleSoundEvents.register(modEventBus);
+        ExampleBiomes.register(modEventBus);
         modEventBus.addListener(this::registerProviders);
     }
 
@@ -98,6 +101,7 @@ public class ExampleMod {
             ExampleStructures.setupStructures();
 
             WoodType.register(ExampleWoodType.REDWOOD);
+            ExampleBiomeGeneration.generateBiomes();
         });
     }
 
@@ -106,9 +110,7 @@ public class ExampleMod {
             // do something that can only be done on the client
             LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
             ClientPlayerEntity player = Minecraft.getInstance().player;
-            RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(),
-                    BuffZombieRenderer::new);
-            RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.PIGEON.get(), PigeonRenderer::new);
+
             RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_DOOR.get(), RenderType.cutout());
             RenderTypeLookup.setRenderLayer(ExampleBlocks.AMETHYST_TRAPDOOR.get(), RenderType.cutout());
             RenderTypeLookup.setRenderLayer(ExampleBlocks.OATS.get(), RenderType.cutout());
@@ -125,6 +127,8 @@ public class ExampleMod {
             RenderTypeLookup.setRenderLayer(ExampleFluids.OIL_FLOWING.get(), RenderType.translucent());
 
         });
+        RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(), BuffZombieRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.PIGEON.get(), PigeonRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

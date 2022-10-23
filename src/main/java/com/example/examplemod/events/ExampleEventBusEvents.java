@@ -6,11 +6,14 @@ import com.example.examplemod.commands.HungerCommand;
 import com.example.examplemod.entity.ExampleEntityTypes;
 import com.example.examplemod.entity.custom.BuffZombieEntity;
 import com.example.examplemod.entity.custom.PigeonEntity;
+import com.example.examplemod.item.custom.ExampleSpawnEggItem;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
 import net.minecraft.world.FoliageColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -22,6 +25,11 @@ public class ExampleEventBusEvents {
     public static void addEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(ExampleEntityTypes.BUFF_ZOMBIE.get(), BuffZombieEntity.setCustomAttributes().build());
         event.put(ExampleEntityTypes.PIGEON.get(), PigeonEntity.setCustomAttributes().build());
+    }
+
+    @SubscribeEvent
+    public static void onRegisterEntities(RegistryEvent.Register<EntityType<?>> event) {
+        ExampleSpawnEggItem.initSpawnEggs();
     }
     @SubscribeEvent
     public static void colorEvent(ColorHandlerEvent.Block event){

@@ -1,6 +1,5 @@
 package com.example.examplemod.entity.custom;
 
-import com.example.examplemod.entity.ExampleEntityTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -27,9 +26,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BuffZombieEntity extends ZombieEntity {
-    public BuffZombieEntity(World world) {
-        this(ExampleEntityTypes.BUFF_ZOMBIE.get(), world);
-    }
     public BuffZombieEntity(EntityType<? extends ZombieEntity> type, World world) {
         super(type, world);
     }

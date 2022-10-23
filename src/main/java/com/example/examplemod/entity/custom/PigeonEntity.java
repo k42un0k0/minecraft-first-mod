@@ -1,6 +1,5 @@
 package com.example.examplemod.entity.custom;
 
-import com.example.examplemod.entity.ExampleEntityTypes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -14,10 +13,8 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
+
 public class PigeonEntity extends ParrotEntity {
-    public PigeonEntity(World worldIn) {
-        super(ExampleEntityTypes.PIGEON.get(), worldIn);
-    }
     public PigeonEntity(EntityType<? extends ParrotEntity> type, World worldIn) {
         super(type, worldIn);
         this.moveControl = new PigeonFlyingMovementController(this, 10, false);
@@ -25,9 +22,9 @@ public class PigeonEntity extends ParrotEntity {
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
         return MobEntity.createMobAttributes()
-                .add(Attributes.MAX_HEALTH,3.0D)
+                .add(Attributes.MAX_HEALTH, 3.0D)
                 .add(Attributes.FLYING_SPEED, 1.3D)
-                .add(Attributes.MOVEMENT_SPEED,1.6D);
+                .add(Attributes.MOVEMENT_SPEED, 1.6D);
 
     }
 
@@ -35,15 +32,14 @@ public class PigeonEntity extends ParrotEntity {
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(1,new PanicGoal(this,1.25D));
-        this.goalSelector.addGoal(2,new WaterAvoidingRandomWalkingGoal(this,1.0D));
-        this.goalSelector.addGoal(3,new LookAtGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.addGoal(7,new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+        this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
     }
 
     @Override
-    protected int getExperienceReward(PlayerEntity player)
-    {
+    protected int getExperienceReward(PlayerEntity player) {
         return 1 + this.level.getRandom().nextInt(4);
     }
 
