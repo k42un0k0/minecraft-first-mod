@@ -38,7 +38,11 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
+import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.item.AxeItem;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -103,6 +107,12 @@ public class ExampleMod {
 
             WoodType.register(ExampleWoodType.REDWOOD);
             ExampleBiomeGeneration.generateBiomes();
+            EntitySpawnPlacementRegistry.register(ExampleEntityTypes.BUFF_ZOMBIE.get(),
+                    EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+                    Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::checkMonsterSpawnRules);
+            EntitySpawnPlacementRegistry.register(ExampleEntityTypes.PIGEON.get(),
+                    EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+                    Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::checkAnimalSpawnRules);
         });
     }
 
@@ -127,6 +137,7 @@ public class ExampleMod {
             RenderTypeLookup.setRenderLayer(ExampleFluids.OIL_BLOCK.get(), RenderType.translucent());
             RenderTypeLookup.setRenderLayer(ExampleFluids.OIL_FLOWING.get(), RenderType.translucent());
             ExampleItemModelProperties.makeBow(ExampleItems.KAUPENBOW.get());
+
         });
         RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.BUFF_ZOMBIE.get(), BuffZombieRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ExampleEntityTypes.PIGEON.get(), PigeonRenderer::new);
