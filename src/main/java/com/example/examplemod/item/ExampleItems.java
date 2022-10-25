@@ -6,6 +6,7 @@ import com.example.examplemod.entity.ExampleEntityTypes;
 import com.example.examplemod.fluid.ExampleFluids;
 import com.example.examplemod.item.custom.ExampleSpawnEggItem;
 import com.example.examplemod.item.custom.Firestone;
+import com.example.examplemod.util.ExampleSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
@@ -114,13 +115,14 @@ public class ExampleItems {
     public static final RegistryObject<Item> OIL_BUCKET = ITEMS.register("oil_bucket",
             () -> new BucketItem(() -> ExampleFluids.OIL_FLUID.get(),
                     defaultProperties().stacksTo(8)));
-    public static final RegistryObject<ExampleSpawnEggItem> BUFF_ZOMBIE_SPAWN_EGG = ITEMS.register("buff_zombie_spawn_egg",
+    public static final RegistryObject<ExampleSpawnEggItem> BUFF_ZOMBIE_SPAWN_EGG = ITEMS.register(
+            "buff_zombie_spawn_egg",
             () -> new ExampleSpawnEggItem(ExampleEntityTypes.BUFF_ZOMBIE, 0x464F56, 0x1D6336,
-                   defaultProperties()));
+                    defaultProperties()));
 
     public static final RegistryObject<ExampleSpawnEggItem> PIGEON_SPAWN_EGG = ITEMS.register("pigeon_spawn_egg",
             () -> new ExampleSpawnEggItem(ExampleEntityTypes.PIGEON, 0x879995, 0x576ABC,
-                   defaultProperties()));
+                    defaultProperties()));
 
 
     public static final RegistryObject<Item> KAUPENBOW = ITEMS.register("kaupenbow",
@@ -128,6 +130,9 @@ public class ExampleItems {
 
     public static final RegistryObject<Item> KAUPEN_ALTAR = registerBlockItem("kaupen_altar",
             ExampleBlocks.KAUPEN_ALTAR);
+    public static final RegistryObject<Item> BAR_BRAWL_MUSIC_DISC = ITEMS.register("bar_brawl_music_disc",
+            () -> new MusicDiscItem(1, () -> ExampleSoundEvents.BAR_BRAWL.get(),
+                    defaultProperties().stacksTo(1)));
 
     private static RegistryObject<Item> registerBlockItem(String name, RegistryObject<Block> blockRegistryObject) {
         return registerItem(name, () ->

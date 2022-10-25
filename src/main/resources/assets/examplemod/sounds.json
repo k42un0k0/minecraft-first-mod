@@ -5,5 +5,13 @@
     "sounds": [
       "examplemod:small_explosion"
     ]
+  },
+  "bar_brawl": {
+    "sounds": [
+      {
+        "name": "examplemod:bar_brawl",
+        "stream": true
+      }
+    ]
   }
 }
